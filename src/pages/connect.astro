@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Lisa Wilkins",
+    "jobTitle": "UX Director & Product Strategist",
+    "description": "17+ year UX director, designer, and product strategist. Previously NBCUniversal, PragerU, Microsoft.",
+    "url": "https://www.lisawilkins.com/connect"
+  }
+};
+---
+
+<BaseLayout
+  title="Connect — Lisa Wilkins"
+  description="Let's talk about what Lisa Wilkins can build with your team. UX Director and Product Strategist with 17+ years of experience."
+  ogImage="/og/connect.png"
+>
+  <!-- JSON-LD: ProfilePage -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} slot="head" />
+
+  <!-- Bio section -->
+  <section class="bg-white pt-20 pb-16 px-6" aria-labelledby="connect-heading">
+    <div class="max-w-5xl mx-auto">
+      <h1 id="connect-heading" class="text-4xl md:text-6xl font-extrabold text-[var(--color-charcoal)] leading-tight mb-12 max-w-xl">
+        Hello!
+      </h1>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-6">
+            I'm Lisa Wilkins. I've spent 17+ years as a UX director, designer, and product strategist building things people actually want to use — across media, news, tech, and education at organizations like NBCUniversal, PragerU, and Microsoft.
+          </p>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-6">
+            I live in the Sonoran Desert, which inspires me daily with its simplicity on the surface and complexity underneath. I'm adaptable, resilient, and nerdy — ask me about WCAG compliance or horse training and you'll get the same enthusiasm.
+          </p>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-10">
+            I'm most proud of raising a son full of gratitude and spoiling a very good dog.
+          </p>
+          <p class="text-xl font-semibold text-[var(--color-charcoal)] mb-8">
+            Let's talk about what I can build with your team.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="mailto:hello@lisawilkins.com"
+              class="inline-block bg-[var(--color-coral)] hover:bg-[var(--color-coral-hover)] text-white text-sm font-semibold uppercase tracking-widest px-8 py-4 rounded-md transition-colors"
+            >
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lisawilkins"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block border-2 border-[var(--color-charcoal)] hover:border-[var(--color-coral)] hover:text-[var(--color-coral)] text-[var(--color-charcoal)] text-sm font-semibold uppercase tracking-widest px-8 py-4 rounded-md transition-colors"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leading by example -->
+  <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="leading-heading">
+    <div class="max-w-5xl mx-auto">
+      <h2 id="leading-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-12 leading-tight">
+        Leading by example
+      </h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <article>
+          <h3 class="text-lg font-extrabold text-[var(--color-charcoal)] mb-3 uppercase tracking-wide">Allied Collaborator</h3>
+          <p class="text-[var(--color-dark-gray)] leading-relaxed">
+            I build trust through candid, proactive communication. Surfacing problems early keeps teams and their stakeholders informed and aligned.
+          </p>
+        </article>
+        <article>
+          <h3 class="text-lg font-extrabold text-[var(--color-charcoal)] mb-3 uppercase tracking-wide">Workflow Architect</h3>
+          <p class="text-[var(--color-dark-gray)] leading-relaxed">
+            I close skills gaps and redesign front- and backstage processes so teams can move fluidly. At PragerU, this reduced product delivery cycle time by 43%.
+          </p>
+        </article>
+        <article>
+          <h3 class="text-lg font-extrabold text-[var(--color-charcoal)] mb-3 uppercase tracking-wide">WCAG Advocate</h3>
+          <p class="text-[var(--color-dark-gray)] leading-relaxed">
+            Accessibility isn't a final checklist. I embed WCAG compliance from project kickoff. I led initiatives that improved accessibility scores from 55% to 85% across multiple platforms.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

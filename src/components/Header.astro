@@ -1,0 +1,85 @@
+---
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/nbc-news', label: 'NBC News' },
+  { href: '/strategy', label: 'Strategy' },
+  { href: '/connect', label: 'Connect' },
+];
+
+function isActive(href: string) {
+  return pathname === href || pathname.startsWith(href + '/');
+}
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-[var(--color-border)]">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" aria-label="Lisa Wilkins — home" class="font-extrabold text-lg tracking-tight text-[var(--color-charcoal)] hover:text-[var(--color-coral)] transition-colors">
+      LW
+    </a>
+
+    <!-- Desktop nav -->
+    <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-8">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class={`text-sm font-semibold uppercase tracking-widest transition-colors ${
+            isActive(href)
+              ? 'text-[var(--color-coral)] border-b-2 border-[var(--color-coral)] pb-0.5'
+              : 'text-[var(--color-dark-gray)] hover:text-[var(--color-coral)]'
+          }`}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-toggle"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Open navigation menu"
+      class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none"
+    >
+      <span class="block h-0.5 w-6 bg-[var(--color-charcoal)] transition-all duration-200 menu-bar-1"></span>
+      <span class="block h-0.5 w-6 bg-[var(--color-charcoal)] transition-all duration-200 menu-bar-2"></span>
+      <span class="block h-0.5 w-6 bg-[var(--color-charcoal)] transition-all duration-200 menu-bar-3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    role="dialog"
+    aria-label="Mobile navigation"
+    class="hidden md:hidden bg-white border-t border-[var(--color-border)] px-6 py-4"
+  >
+    <nav class="flex flex-col gap-4">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class={`text-sm font-semibold uppercase tracking-widest transition-colors py-2 ${
+            isActive(href)
+              ? 'text-[var(--color-coral)]'
+              : 'text-[var(--color-dark-gray)] hover:text-[var(--color-coral)]'
+          }`}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+</script>

@@ -1,0 +1,27 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-DNS-Prefetch-Control = "on"
+
+[[redirects]]
+  from = "http://lisawilkins.com/*"
+  to = "https://www.lisawilkins.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.lisawilkins.com/*"
+  to = "https://www.lisawilkins.com/:splat"
+  status = 301
+  force = true

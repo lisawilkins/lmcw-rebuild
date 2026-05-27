@@ -1,0 +1,63 @@
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow/800.css';
+@import '@fontsource/alegreya/400.css';
+@import '@fontsource/alegreya/700.css';
+
+@import 'tailwindcss';
+
+@theme {
+  /* Brand colors */
+  --color-coral: #d9415c;
+  --color-coral-hover: #c23750;
+  --color-slate: #4a6271;
+  --color-slate-hover: #3b5060;
+
+  /* Neutrals */
+  --color-cream: #f7efd5;
+  --color-cream-light: #ede4c7;
+  --color-off-white: #fcfaf4;
+  --color-light-bg: #f5f5f0;
+  --color-charcoal: #1a1a1a;
+  --color-dark-gray: #333333;
+  --color-mid-gray: #666666;
+  --color-border: #e5e5e5;
+
+  /* Typography */
+  --font-sans: 'Barlow', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Alegreya', ui-serif, Georgia, serif;
+
+  /* Spacing */
+  --spacing-section: 5rem;
+  --spacing-section-lg: 7.5rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 3px;
+}
