@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HelloSection from '../components/HelloSection.astro';
 ---
 
 <BaseLayout
@@ -29,7 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Solutions for NOW are valuable. Solutions for LATER pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
         </p>
         <a
-          href="/nbc-news"
+          href="/projects-nbcapp"
           class="inline-block mt-4 bg-[var(--color-coral)] hover:bg-[var(--color-coral-hover)] text-white text-sm font-semibold uppercase tracking-widest px-6 py-3 rounded-md transition-colors"
         >
           View NBC App Redesign
@@ -52,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           I've built and inherited a platform serving 1.3M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components — work that streamlined delivery cycles by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
         </p>
         <a
-          href="/strategy"
+          href="/projects-puf"
           class="inline-block mt-4 bg-[var(--color-slate)] hover:bg-[var(--color-slate-hover)] text-white text-sm font-semibold uppercase tracking-widest px-6 py-3 rounded-md transition-colors"
         >
           View Product Strategy Impact
@@ -123,24 +124,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Hello / Bio -->
-  <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="hello-heading">
-    <div class="max-w-5xl mx-auto max-w-2xl">
-      <h2 id="hello-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-6 leading-tight">
-        Hello!
-      </h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-8">
-        I'm Lisa Wilkins. I've spent 17+ years as a UX director, designer, and product strategist building things people actually want to use — across media, news, tech, and education at organizations like NBCUniversal, PragerU, and Microsoft. I live in the Sonoran Desert, which inspires me daily with its simplicity on the surface and complexity underneath. I'm adaptable, resilient, and nerdy — ask me about WCAG compliance or horse training and you'll get the same enthusiasm. I'm most proud of raising a son full of gratitude and spoiling a very good dog.
-      </p>
-      <p class="text-base md:text-lg font-semibold text-[var(--color-dark-gray)] mb-8">
-        Let's talk about what I can build with your team.
-      </p>
-      <a
-        href="/connect"
-        class="inline-block bg-[var(--color-coral)] hover:bg-[var(--color-coral-hover)] text-white text-sm font-semibold uppercase tracking-widest px-8 py-4 rounded-md transition-colors"
-      >
-        Connect
-      </a>
-    </div>
-  </section>
+  <HelloSection />
 </BaseLayout>
