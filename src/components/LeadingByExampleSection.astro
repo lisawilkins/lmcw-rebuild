@@ -1,0 +1,124 @@
+---
+/**
+ * LeadingByExampleSection
+ *
+ * Dark #333 background with 4 dot PNG images overlaid at 20% opacity,
+ * positioned in the same cluster formation as the HumanCenteredSection
+ * end state. Three dark cards arranged in a responsive grid.
+ */
+---
+
+<section
+  class="lbe-section relative overflow-hidden"
+  aria-labelledby="leading-heading"
+>
+
+  <!-- ── Background: dark base + dot cluster ──────────────────────── -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0 bg-[var(--color-dark-gray)]"></div>
+
+    <div class="lbe-dot lbe-dot-blue absolute">
+      <img src="/images/home/dot-blue.png" alt="" class="w-full h-full" />
+    </div>
+    <div class="lbe-dot lbe-dot-green absolute">
+      <img src="/images/home/dot-green.png" alt="" class="w-full h-full" />
+    </div>
+    <div class="lbe-dot lbe-dot-red absolute">
+      <img src="/images/home/dot-red.png" alt="" class="w-full h-full" />
+    </div>
+    <div class="lbe-dot lbe-dot-yellow absolute">
+      <img src="/images/home/dot-yellow.png" alt="" class="w-full h-full" />
+    </div>
+  </div>
+
+  <!-- ── Content ──────────────────────────────────────────────────── -->
+  <div class="relative flex flex-col gap-5 md:gap-[40px] lg:gap-[60px] items-center py-[60px] md:py-[80px] lg:py-[100px] px-5 md:px-[40px] lg:px-[100px]">
+
+    <h2
+      id="leading-heading"
+      class="font-medium leading-[0.9] text-[var(--color-cream)] text-[40px] lg:text-[60px] text-center w-full"
+    >
+      Leading by example
+    </h2>
+
+    <!-- Cards row (horizontal desktop/tablet, vertical stack mobile) -->
+    <div class="flex flex-col md:flex-row gap-5 w-full items-stretch">
+
+      <article class="lbe-card flex flex-col gap-5">
+        <h3 class="font-normal leading-[0.9] text-[var(--color-cream-light)] text-[28px] lg:text-[40px]">
+          Allied<br />Collaborator
+        </h3>
+        <p class="leading-[1.2] text-[var(--color-off-white)] text-[18px] lg:text-[24px]">
+          I build trust through candid, proactive communication. Surfacing problems early keeps teams and their stakeholders informed and aligned.
+        </p>
+      </article>
+
+      <article class="lbe-card flex flex-col gap-5">
+        <h3 class="font-normal leading-[0.9] text-[var(--color-cream-light)] text-[28px] lg:text-[40px]">
+          WCAG<br />Advocate
+        </h3>
+        <p class="leading-[1.2] text-[var(--color-off-white)] text-[18px] lg:text-[24px]">
+          Accessibility isn't a final checklist. I embed WCAG compliance from project kickoff. I led initiatives that improved accessibility scores from 55% to 85% across multiple platforms.
+        </p>
+      </article>
+
+      <article class="lbe-card flex flex-col gap-5">
+        <h3 class="font-normal leading-[0.9] text-[var(--color-cream-light)] text-[28px] lg:text-[40px]">
+          Workflow<br />Architect
+        </h3>
+        <p class="leading-[1.2] text-[var(--color-off-white)] text-[18px] lg:text-[24px]">
+          I close skills gaps and redesign front- and backstage processes so teams can move fluidly. At PragerU, this reduced product delivery cycle time by 43%.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Cards ──────────────────────────────────────────────────────── */
+  .lbe-card {
+    flex: 1;
+    background-color: #222;
+    border-radius: 8px;
+    padding: 33px;
+    box-shadow: 8px 8px 6px rgba(0, 0, 0, 0.35);
+  }
+  @media (min-width: 768px)  { .lbe-card { padding: 36px; } }
+  @media (min-width: 1024px) { .lbe-card { padding: 52px; } }
+
+  /* ── Dot base ───────────────────────────────────────────────────── */
+  .lbe-dot {
+    left: 50%;
+    top: 50%;
+    opacity: 0.2;
+  }
+
+  /* ── Dot sizes ──────────────────────────────────────────────────── */
+  .lbe-dot               { width: 270px; height: 270px; }
+  @media (min-width: 768px)  { .lbe-dot { width: 375px; height: 375px; } }
+  @media (min-width: 1024px) { .lbe-dot { width: 600px; height: 600px; } }
+
+  /* ── Dot cluster positions (HC section end-state formation) ─────── */
+  /* Mobile */
+  .lbe-dot-blue   { transform: translate(-50%, calc(-50% - 101px)); }
+  .lbe-dot-green  { transform: translate(calc(-50% + 94px),  -50%); }
+  .lbe-dot-red    { transform: translate(-50%, calc(-50% + 106px)); }
+  .lbe-dot-yellow { transform: translate(calc(-50% - 90px),  -50%); }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .lbe-dot-blue   { transform: translate(-50%, calc(-50% - 141px)); }
+    .lbe-dot-green  { transform: translate(calc(-50% + 130px), -50%); }
+    .lbe-dot-red    { transform: translate(-50%, calc(-50% + 147px)); }
+    .lbe-dot-yellow { transform: translate(calc(-50% - 124px), -50%); }
+  }
+
+  /* Desktop — exact values from Figma HC end state */
+  @media (min-width: 1024px) {
+    .lbe-dot-blue   { transform: translate(-50%, calc(-50% - 225px)); }
+    .lbe-dot-green  { transform: translate(calc(-50% + 208px), -50%); }
+    .lbe-dot-red    { transform: translate(-50%, calc(-50% + 235px)); }
+    .lbe-dot-yellow { transform: translate(calc(-50% - 199px), -50%); }
+  }
+</style>

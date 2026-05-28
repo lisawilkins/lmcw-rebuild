@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HelloSection from '../components/HelloSection.astro';
 import SplitSection from '../components/SplitSection.astro';
 import StackedSection from '../components/StackedSection.astro';
 import HumanCenteredSection from '../components/HumanCenteredSection.astro';
+import LeadingByExampleSection from '../components/LeadingByExampleSection.astro';
+import ConnectSection from '../components/ConnectSection.astro';
 ---
 
 <BaseLayout
@@ -88,34 +89,8 @@ import HumanCenteredSection from '../components/HumanCenteredSection.astro';
     </p>
   </StackedSection>
 
-  <!-- Leading by example -->
-  <section class="bg-white py-16 px-6" aria-labelledby="leading-heading">
-    <div class="max-w-5xl mx-auto">
-      <h2 id="leading-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-12 leading-tight">
-        Leading by example
-      </h2>
-      <div class="grid md:grid-cols-3 gap-10">
-        <article>
-          <h3 class="text-lg font-extrabold text-[var(--color-charcoal)] mb-3 uppercase tracking-wide">Allied Collaborator</h3>
-          <p class="text-[var(--color-dark-gray)] leading-relaxed">
-            I build trust through candid, proactive communication. Surfacing problems early keeps teams and their stakeholders informed and aligned.
-          </p>
-        </article>
-        <article>
-          <h3 class="text-lg font-extrabold text-[var(--color-charcoal)] mb-3 uppercase tracking-wide">Workflow Architect</h3>
-          <p class="text-[var(--color-dark-gray)] leading-relaxed">
-            I close skills gaps and redesign front- and backstage processes so teams can move fluidly. At PragerU, this reduced product delivery cycle time by 43%.
-          </p>
-        </article>
-        <article>
-          <h3 class="text-lg font-extrabold text-[var(--color-charcoal)] mb-3 uppercase tracking-wide">WCAG Advocate</h3>
-          <p class="text-[var(--color-dark-gray)] leading-relaxed">
-            Accessibility isn't a final checklist. I embed WCAG compliance from project kickoff. I led initiatives that improved accessibility scores from 55% to 85% across multiple platforms.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <LeadingByExampleSection />
 
-  <HelloSection />
+
+  <ConnectSection />
 </BaseLayout>
