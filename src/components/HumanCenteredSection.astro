@@ -1,0 +1,185 @@
+---
+interface Props {
+  heading?: string;
+}
+
+const {
+  heading = 'Test, learn, pivot',
+} = Astro.props;
+---
+
+<section
+  class="hc-section bg-[var(--color-dark-gray)] overflow-hidden"
+  aria-labelledby="hc-heading"
+>
+  <div class="hc-inner flex flex-col md:flex-row items-stretch w-full max-w-[1280px] mx-auto">
+
+    <!-- ── Dots panel ──────────────────────────────────────────────
+         clip-path clips L/R at the panel boundary (0 → panel width)
+         but the -9999px top/bottom values allow dots to bleed above
+         and below the panel without being cropped.
+    ─────────────────────────────────────────────────────────────── -->
+    <div
+      class="hc-dots relative w-full h-[260px] md:h-[640px] lg:h-[800px] md:w-1/2"
+      aria-hidden="true"
+    >
+      <!-- dot-blue: starts above, lands just above centre -->
+      <div class="hc-dot hc-dot-blue" aria-hidden="true">
+        <img src="/images/home/dot-blue.png" alt="" class="w-full h-full" />
+      </div>
+
+      <!-- dot-green: starts right, lands just right of centre -->
+      <div class="hc-dot hc-dot-green" aria-hidden="true">
+        <img src="/images/home/dot-green.png" alt="" class="w-full h-full" />
+      </div>
+
+      <!-- dot-red: starts below, lands just below centre -->
+      <div class="hc-dot hc-dot-red" aria-hidden="true">
+        <img src="/images/home/dot-red.png" alt="" class="w-full h-full" />
+      </div>
+
+      <!-- dot-yellow: starts left, lands just left of centre -->
+      <div class="hc-dot hc-dot-yellow" aria-hidden="true">
+        <img src="/images/home/dot-yellow.png" alt="" class="w-full h-full" />
+      </div>
+
+      <!-- "HUMAN CENTERED" — always centred, revealed as dots converge -->
+      <div
+        class="hc-label absolute z-10 text-center pointer-events-none select-none"
+      >
+        <p class="font-extrabold leading-none text-[#222] text-[20px] md:text-[24px] lg:text-[32px]">HUMAN</p>
+        <p class="font-extrabold leading-none text-[#222] text-[20px] md:text-[24px] lg:text-[32px]">CENTERED</p>
+      </div>
+    </div>
+
+    <!-- ── Copy panel ──────────────────────────────────────────── -->
+    <div class="flex flex-col justify-center px-5 py-[60px] md:py-[80px] md:w-1/2 md:px-[60px] lg:px-[80px]">
+      <div class="flex flex-col gap-5 md:gap-[40px] w-full lg:w-[465px]">
+        <h2
+          id="hc-heading"
+          class="font-medium leading-[0.9] text-[var(--color-cream)] text-[36px] md:text-[40px] lg:text-[60px]"
+        >
+          {heading}
+        </h2>
+
+        <div class="flex flex-col gap-4 leading-[1.5] text-[var(--color-off-white)] text-[18px] md:text-[20px]">
+          <slot name="body" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ── "HUMAN CENTERED" label: pinned to panel centre ────────────── */
+  .hc-label {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ── Dot base ─────────────────────────────────────────────────────
+     All dots sit at the panel centre (left/top 50%) and are offset
+     purely via transform. Transition animates start → end offset.
+  ─────────────────────────────────────────────────────────────────── */
+  .hc-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0.2;
+    transition: transform 1.2s ease-in-out;
+  }
+
+  /* ── Dot sizes ─────────────────────────────────────────────────── */
+  .hc-dot               { width: 270px;  height: 270px; }
+  @media (min-width: 768px)  { .hc-dot { width: 375px;  height: 375px; } }
+  @media (min-width: 1024px) { .hc-dot { width: 600px;  height: 600px; } }
+
+  /* ── START positions (dots off-screen at cardinal points) ────────
+     Mobile: scaled ×0.45  |  Tablet: scaled ×0.625  |  Desktop: exact Figma
+  ─────────────────────────────────────────────────────────────────── */
+  /* Mobile */
+  .hc-dot-blue   { transform: translate(-50%, calc(-50% - 191px)); }
+  .hc-dot-green  { transform: translate(calc(-50% + 247px), -50%); }
+  .hc-dot-red    { transform: translate(-50%, calc(-50% + 191px)); }
+  .hc-dot-yellow { transform: translate(calc(-50% - 202px), -50%); }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .hc-dot-blue   { transform: translate(-50%, calc(-50% - 266px)); }
+    .hc-dot-green  { transform: translate(calc(-50% + 342px), -50%); }
+    .hc-dot-red    { transform: translate(-50%, calc(-50% + 266px)); }
+    .hc-dot-yellow { transform: translate(calc(-50% - 281px), -50%); }
+  }
+
+  /* Desktop — exact Figma values */
+  @media (min-width: 1024px) {
+    .hc-dot-blue   { transform: translate(-50%, calc(-50% - 425px)); }
+    .hc-dot-green  { transform: translate(calc(-50% + 548px), -50%); }
+    .hc-dot-red    { transform: translate(-50%, calc(-50% + 425px)); }
+    .hc-dot-yellow { transform: translate(calc(-50% - 449px), -50%); }
+  }
+
+  /* ── END positions (overlapping cluster — exact Figma values) ─────
+     Mobile: scaled ×0.45  |  Tablet: scaled ×0.625  |  Desktop: exact
+  ─────────────────────────────────────────────────────────────────── */
+  /* Mobile */
+  .hc-section.is-visible .hc-dot-blue   { transform: translate(-50%, calc(-50% - 101px)); }
+  .hc-section.is-visible .hc-dot-green  { transform: translate(calc(-50% + 94px),  -50%); }
+  .hc-section.is-visible .hc-dot-red    { transform: translate(-50%, calc(-50% + 106px)); }
+  .hc-section.is-visible .hc-dot-yellow { transform: translate(calc(-50% - 90px),  -50%); }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .hc-section.is-visible .hc-dot-blue   { transform: translate(-50%, calc(-50% - 141px)); }
+    .hc-section.is-visible .hc-dot-green  { transform: translate(calc(-50% + 130px), -50%); }
+    .hc-section.is-visible .hc-dot-red    { transform: translate(-50%, calc(-50% + 147px)); }
+    .hc-section.is-visible .hc-dot-yellow { transform: translate(calc(-50% - 124px), -50%); }
+  }
+
+  /* Desktop — exact Figma values */
+  @media (min-width: 1024px) {
+    .hc-section.is-visible .hc-dot-blue   { transform: translate(-50%, calc(-50% - 225px)); }
+    .hc-section.is-visible .hc-dot-green  { transform: translate(calc(-50% + 208px), -50%); }
+    .hc-section.is-visible .hc-dot-red    { transform: translate(-50%, calc(-50% + 235px)); }
+    .hc-section.is-visible .hc-dot-yellow { transform: translate(calc(-50% - 199px), -50%); }
+  }
+
+  /* ── Stagger: dots arrive at slightly different times ───────────── */
+  .hc-section.is-visible .hc-dot-blue   { transition-delay: 0ms;   }
+  .hc-section.is-visible .hc-dot-red    { transition-delay: 60ms;  }
+  .hc-section.is-visible .hc-dot-green  { transition-delay: 120ms; }
+  .hc-section.is-visible .hc-dot-yellow { transition-delay: 180ms; }
+</style>
+
+<script>
+  const section = document.querySelector<HTMLElement>('.hc-section');
+  if (section) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            observer.disconnect();
+            // Double rAF: guarantees the browser paints the start-state
+            // transform at least once before the is-visible class triggers
+            // the end-state transform + transition. Without this, the class
+            // can land in the same paint frame as the initial render and the
+            // browser skips the transition entirely.
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                section.classList.add('is-visible');
+              });
+            });
+          }
+        });
+      },
+      // threshold:0  → fires as soon as the first pixel enters the viewport
+      // rootMargin   → trigger 80px before the section top hits the bottom
+      //               of the viewport, so animation starts as the section
+      //               comes into view rather than lagging behind the scroll
+      { threshold: 0, rootMargin: '0px 0px -80px 0px' }
+    );
+    observer.observe(section);
+  }
+</script>

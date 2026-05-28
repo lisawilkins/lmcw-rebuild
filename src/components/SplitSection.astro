@@ -1,0 +1,104 @@
+---
+/**
+ * SplitSection — reusable two-column layout: copy left, image right (desktop/tablet).
+ * On mobile the image stacks above the copy.
+ *
+ * Usage:
+ *   <SplitSection
+ *     id="nbc-heading"
+ *     bgColor="var(--color-dark-gray)"
+ *     heading="Building for scale & flexibility"
+ *     headingColor="var(--color-cream)"
+ *     ctaLabel="View NBC App Redesign"
+ *     ctaHref="/projects-nbcapp"
+ *     ctaBgColor="var(--color-coral)"
+ *     ctaBgHoverColor="var(--color-coral-hover)"
+ *     imageSrc="/images/home/home-scale-nbc.png"
+ *     imageAlt="A collage of mobile app screens from NBC News brands"
+ *     imageAspect="620/790"
+ *   >
+ *     <p slot="body">Body text here…</p>
+ *   </SplitSection>
+ */
+
+interface Props {
+  id: string;
+  bgColor?: string;
+  heading: string;
+  headingColor?: string;
+  ctaLabel: string;
+  ctaHref: string;
+  ctaBgColor?: string;
+  ctaBgHoverColor?: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageAspect?: string;
+  imagePosition?: 'left' | 'right';
+  imageMaxWidth?: string;
+}
+
+const {
+  id,
+  bgColor = 'var(--color-dark-gray)',
+  heading,
+  headingColor = 'var(--color-cream)',
+  ctaLabel,
+  ctaHref,
+  ctaBgColor = 'var(--color-coral)',
+  ctaBgHoverColor = 'var(--color-coral-hover)',
+  imageSrc,
+  imageAlt,
+  imageAspect = '620/790',
+  imagePosition = 'right',
+  imageMaxWidth,
+} = Astro.props;
+
+const imageOnLeft = imagePosition === 'left';
+---
+
+<section
+  id={`section-${id}`}
+  class="bg-[var(--split-bg)]"
+  style={`--split-bg: ${bgColor}; --split-heading-color: ${headingColor}; --split-cta-bg: ${ctaBgColor}; --split-cta-hover: ${ctaBgHoverColor};`}
+  aria-labelledby={id}
+>
+  <div class="flex flex-col md:flex-row gap-[10px] md:gap-[20px] lg:gap-[40px] items-center justify-center py-[60px] md:py-[40px] lg:py-[80px] px-5 md:px-0">
+
+    <!-- Copy: always second on mobile; left on desktop (default) or right when imagePosition="left" -->
+    <div class={`order-2 ${imageOnLeft ? 'md:order-2' : 'md:order-1'} flex md:flex-[1_0_0] flex-col md:h-full items-start ${imageOnLeft ? 'md:items-start' : 'md:items-end'} justify-center md:py-[80px] w-full`}>
+      <div class={`flex flex-col gap-5 md:gap-10 items-start w-full md:w-[390px] lg:w-[465px] ${imageOnLeft ? 'md:pr-[60px] lg:pr-0' : 'md:pl-[60px] lg:pl-0'}`}>
+        <h2
+          id={id}
+          class="font-medium leading-[0.9] text-[var(--split-heading-color)] text-[36px] md:text-[40px] lg:text-[60px]"
+        >
+          {heading}
+        </h2>
+
+        <!-- Body content via slot -->
+        <slot name="body" />
+
+        <a
+          href={ctaHref}
+          class="bg-[var(--split-cta-bg)] hover:bg-[var(--split-cta-hover)] text-white font-semibold text-[16px] px-6 py-4 rounded-[6px] transition-colors shrink-0"
+        >
+          {ctaLabel}
+        </a>
+      </div>
+    </div>
+
+    <!-- Image: always first on mobile; right (default) or left when imagePosition="left" -->
+    <div class={`order-1 ${imageOnLeft ? 'md:order-1' : 'md:order-2'} md:flex-[1_0_0] flex items-center w-full`}>
+      <div
+        class="min-w-0 md:max-h-[600px] lg:max-h-[900px]"
+        style={`aspect-ratio: ${imageAspect}; ${imageMaxWidth ? `max-width: ${imageMaxWidth};` : 'flex: 1 0 0;'}`}
+      >
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="w-full h-full object-contain"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>

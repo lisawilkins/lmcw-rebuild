@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HelloSection from '../components/HelloSection.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <BaseLayout
@@ -8,15 +9,17 @@ import HelloSection from '../components/HelloSection.astro';
   description="How Lisa Wilkins transformed PragerU's content discovery — categorizing 2,000+ videos, reorganizing 500+ personalities, and boosting video page engagement by 36%."
   ogImage="/og/strategy.png"
 >
-  <!-- Page header -->
-  <section class="bg-[var(--color-slate)] pt-20 pb-16 px-6" aria-labelledby="page-heading">
-    <div class="max-w-5xl mx-auto">
-      <p class="text-sm font-semibold uppercase tracking-widest text-white opacity-70 mb-4">Strategy</p>
-      <h1 id="page-heading" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 max-w-2xl">
-        Product Strategy<br />&amp; Content Organization
-      </h1>
-    </div>
-  </section>
+  <PageHero
+    ariaLabelledby="page-heading"
+    bgColor="var(--color-slate)"
+    bgImage="/images/strategy/strat-bg-heading.png"
+    gradientFade={true}
+  >
+    <p class="text-sm font-semibold uppercase tracking-widest text-white opacity-70 mb-4">Strategy</p>
+    <h1 id="page-heading" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 max-w-2xl">
+      Product Strategy<br />&amp; Content Organization
+    </h1>
+  </PageHero>
 
   <!-- THE CHALLENGES -->
   <section class="bg-white py-16 px-6" aria-labelledby="challenges-heading">
@@ -140,7 +143,7 @@ import HelloSection from '../components/HelloSection.astro';
       <a href="/projects-nbcapp" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
         &larr; NBC News
       </a>
-      <a href="/connect" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
+      <a href="#connect" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
         Connect &rarr;
       </a>
     </div>

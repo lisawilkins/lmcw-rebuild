@@ -1,10 +1,9 @@
 ---
 const pathname = Astro.url.pathname;
 
-const navLinks = [
+const pageLinks = [
   { href: '/projects-nbcapp', label: 'NBC News' },
   { href: '/projects-puf', label: 'Strategy' },
-  { href: '/connect', label: 'Connect' },
 ];
 
 function isActive(href: string) {
@@ -12,27 +11,46 @@ function isActive(href: string) {
 }
 ---
 
-<header class="sticky top-0 z-50 bg-white border-b border-[var(--color-border)]">
-  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" aria-label="Lisa Wilkins — home" class="font-extrabold text-lg tracking-tight text-[var(--color-charcoal)] hover:text-[var(--color-coral)] transition-colors">
-      LW
+<header class="sticky top-0 z-50 bg-[var(--color-blue-800)]">
+  <div class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+
+    <!-- Logomark -->
+    <a href="/" aria-label="Lisa Wilkins — home" class="shrink-0 block">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 916 958"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M802.645 691.191C780.288 714.137 710.909 846.203 486.391 853.197C263.072 853.197 104.588 685.305 104.588 461.687C104.588 256.906 248.837 97.6237 486.483 97.6237C723.022 97.6237 817.665 279.436 817.665 279.436L758.853 513.396L711.924 285.415H639.246L568.713 513.35L490.221 285.345H419.411L365.883 572.861H282.107V285.345H198.516V650.54H435.077L466.987 463.072L533.62 650.978H603.829L669.078 462.195L701.795 651.024L792.424 651.879C792.424 651.879 909.078 281.606 909.078 277.289C909.078 254.99 779.869 6.92529 487.106 6.92529C204.584 6.92529 13.8438 230.866 13.8438 473.229C13.8438 732.928 213.767 948.766 486.391 948.766C700.065 948.766 816.766 815.085 868.632 752.065L802.645 691.191Z"
+          fill="var(--color-off-white)"
+        />
+      </svg>
     </a>
 
     <!-- Desktop nav -->
-    <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-8">
-      {navLinks.map(({ href, label }) => (
+    <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-[10px]">
+      {pageLinks.map(({ href, label }) => (
         <a
           href={href}
-          class={`text-sm font-semibold uppercase tracking-widest transition-colors ${
+          class={`text-lg font-normal uppercase px-1 py-2 transition-colors ${
             isActive(href)
-              ? 'text-[var(--color-coral)] border-b-2 border-[var(--color-coral)] pb-0.5'
-              : 'text-[var(--color-dark-gray)] hover:text-[var(--color-coral)]'
+              ? 'text-[var(--color-off-white)] border-b-2 border-[var(--color-blue-500)]'
+              : 'text-[var(--color-off-white)] hover:bg-black/30 hover:text-[var(--color-cream)]'
           }`}
         >
           {label}
         </a>
       ))}
+      <a
+        href="#connect"
+        class="text-lg font-normal uppercase px-1 py-2 text-[var(--color-off-white)] hover:bg-black/30 hover:text-[var(--color-cream)] transition-colors"
+      >
+        Connect
+      </a>
     </nav>
 
     <!-- Mobile hamburger -->
@@ -43,9 +61,9 @@ function isActive(href: string) {
       aria-label="Open navigation menu"
       class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none"
     >
-      <span class="block h-0.5 w-6 bg-[var(--color-charcoal)] transition-all duration-200 menu-bar-1"></span>
-      <span class="block h-0.5 w-6 bg-[var(--color-charcoal)] transition-all duration-200 menu-bar-2"></span>
-      <span class="block h-0.5 w-6 bg-[var(--color-charcoal)] transition-all duration-200 menu-bar-3"></span>
+      <span class="block h-0.5 w-6 bg-[var(--color-off-white)] transition-all duration-200"></span>
+      <span class="block h-0.5 w-6 bg-[var(--color-off-white)] transition-all duration-200"></span>
+      <span class="block h-0.5 w-6 bg-[var(--color-off-white)] transition-all duration-200"></span>
     </button>
   </div>
 
@@ -54,21 +72,27 @@ function isActive(href: string) {
     id="mobile-menu"
     role="dialog"
     aria-label="Mobile navigation"
-    class="hidden md:hidden bg-white border-t border-[var(--color-border)] px-6 py-4"
+    class="hidden md:hidden bg-[var(--color-blue-800)] border-t border-black/20 px-5 py-4"
   >
     <nav class="flex flex-col gap-4">
-      {navLinks.map(({ href, label }) => (
+      {pageLinks.map(({ href, label }) => (
         <a
           href={href}
-          class={`text-sm font-semibold uppercase tracking-widest transition-colors py-2 ${
+          class={`text-lg font-normal uppercase transition-colors py-2 ${
             isActive(href)
-              ? 'text-[var(--color-coral)]'
-              : 'text-[var(--color-dark-gray)] hover:text-[var(--color-coral)]'
+              ? 'text-[var(--color-off-white)] border-b-2 border-[var(--color-blue-500)]'
+              : 'text-[var(--color-off-white)] hover:text-[var(--color-cream)]'
           }`}
         >
           {label}
         </a>
       ))}
+      <a
+        href="#connect"
+        class="text-lg font-normal uppercase text-[var(--color-off-white)] hover:text-[var(--color-cream)] transition-colors py-2"
+      >
+        Connect
+      </a>
     </nav>
   </div>
 </header>

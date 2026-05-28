@@ -1,0 +1,43 @@
+---
+interface Props {
+  ariaLabelledby: string;
+  bgColor?: string;
+  bgImage?: string;
+  imageOpacity?: number;
+  minHeight?: string;
+  gradientFade?: boolean;
+}
+
+const {
+  ariaLabelledby,
+  bgColor = 'var(--color-off-white)',
+  bgImage,
+  imageOpacity = 0.4,
+  minHeight = '320px',
+  gradientFade = false,
+} = Astro.props;
+---
+
+<section
+  class="relative flex flex-col overflow-hidden"
+  style={`background-color: ${bgColor}; min-height: ${minHeight}`}
+  aria-labelledby={ariaLabelledby}
+>
+  {bgImage && (
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+      style={`background-image: url('${bgImage}'); opacity: ${imageOpacity}`}
+      aria-hidden="true"
+    />
+  )}
+  {gradientFade && (
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style={`background: linear-gradient(to bottom, transparent 30%, ${bgColor} 90%)`}
+      aria-hidden="true"
+    />
+  )}
+  <div class="relative mt-auto max-w-5xl mx-auto w-full px-6 pb-10">
+    <slot />
+  </div>
+</section>

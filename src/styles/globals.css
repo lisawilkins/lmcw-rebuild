@@ -1,4 +1,6 @@
+@import '@fontsource/barlow/300.css';
 @import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
 @import '@fontsource/barlow/600.css';
 @import '@fontsource/barlow/800.css';
 @import '@fontsource/alegreya/400.css';
@@ -7,29 +9,81 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand colors */
-  --color-coral: #d9415c;
-  --color-coral-hover: #c23750;
-  --color-slate: #4a6271;
-  --color-slate-hover: #3b5060;
+  /* Primary */
+  --color-primary: #D9415C;
+  --color-primary-dark: #A4243B;
+  --color-primary-light: #FFDEE4;
 
-  /* Neutrals */
-  --color-cream: #f7efd5;
-  --color-cream-light: #ede4c7;
-  --color-off-white: #fcfaf4;
-  --color-light-bg: #f5f5f0;
-  --color-charcoal: #1a1a1a;
+  /* Secondary (orange) */
+  --color-secondary: #FF9A26;
+  --color-secondary-dark: #F07E3C;
+  --color-secondary-light: #FFD8AB;
+
+  /* Blue scale */
+  --color-blue-100: #E9F3F7;
+  --color-blue-200: #CBE7F2;
+  --color-blue-300: #A0CCDE;
+  --color-blue-400: #79B1C7;
+  --color-blue-500: #5E97AD;
+  --color-blue-600: #4E7F91;
+  --color-blue-700: #406675;
+  --color-blue-800: #273E47;
+  --color-blue-900: #0B1214;
+
+  /* Gray scale */
+  --color-gray-100: #F8F9FA;
+  --color-gray-200: #E9ECEF;
+  --color-gray-300: #DEE2E6;
+  --color-gray-400: #CED4DA;
+  --color-gray-600: #6C757D;
+  --color-gray-700: #495057;
+  --color-gray-800: #343A40;
+  --color-gray-900: #212529;
+
+  /* Status */
+  --color-success: #28A745;
+  --color-danger: #DC3545;
+  --color-warning: #FFC107;
+  --color-info: #17A2B8;
+
+  /* Base */
+  --color-white: #FFFFFF;
+
+  /* Semantic aliases (backward compatible with existing markup) */
+  --color-coral: var(--color-primary);
+  --color-coral-hover: var(--color-primary-dark);
+  --color-slate: var(--color-blue-600);
+  --color-slate-hover: var(--color-blue-700);
+  --color-cream: #F7EFD5;
+  --color-cream-light: #EDE4C7;
+  --color-off-white: #FCFAF4;
+  --color-tan-dark: #3B3524;
+  --color-light-bg: var(--color-gray-100);
+  --color-charcoal: var(--color-gray-900);
   --color-dark-gray: #333333;
-  --color-mid-gray: #666666;
-  --color-border: #e5e5e5;
+  --color-mid-gray: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
 
   /* Typography */
   --font-sans: 'Barlow', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Alegreya', ui-serif, Georgia, serif;
 
-  /* Spacing */
+  /* Spacing — Figma Space/Spacing-1..8 */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
   --spacing-section: 5rem;
   --spacing-section-lg: 7.5rem;
+
+  /* Shadows — Figma Shadow/Small, Regular, Large */
+  --shadow-sm: 0 1px 4px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 10px rgb(0 0 0 / 0.12);
+  --shadow-lg: 0 8px 35px rgb(0 0 0 / 0.16);
 
   /* Border radius */
   --radius-sm: 4px;
@@ -45,15 +99,40 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-charcoal);
-  background-color: #ffffff;
+  background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
-  font-weight: 800;
   line-height: 1.15;
+}
+
+:is(h1, h2, h3, h4, h5, h6).font-extrabold,
+:is(h1, h2, h3, h4, h5, h6).font-bold,
+:is(h1, h2, h3, h4, h5, h6).font-semibold {
+  font-weight: 500;
+}
+
+p {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+p.uppercase,
+p.font-extrabold,
+p.font-semibold:not(.leading-relaxed),
+p.font-medium {
+  font-family: var(--font-sans);
+}
+
+p.font-medium {
+  font-weight: 500;
+}
+
+p.font-extrabold {
+  font-weight: 700
 }
 
 /* Focus visible */

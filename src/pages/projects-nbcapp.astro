@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HelloSection from '../components/HelloSection.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <BaseLayout
@@ -8,18 +9,20 @@ import HelloSection from '../components/HelloSection.astro';
   description="How Lisa Wilkins redesigned the NBC News app — restructuring the tech stack, introducing a flexible editorial system, and scaling the Bento design system across NBC News, TODAY, and Telemundo."
   ogImage="/og/nbc-news.png"
 >
-  <!-- Page header -->
-  <section class="bg-[var(--color-charcoal)] pt-20 pb-16 px-6" aria-labelledby="page-heading">
-    <div class="max-w-5xl mx-auto">
-      <p class="text-sm font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-4">NBC News</p>
-      <h1 id="page-heading" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 max-w-2xl">
-        NBC News App
-      </h1>
-      <p class="text-base text-gray-400 max-w-xl italic">
-        A few points about the decision making process — by no means a complete list.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    ariaLabelledby="page-heading"
+    bgColor="var(--color-charcoal)"
+    bgImage="/images/nbc/nbc-bg-heading.png"
+    gradientFade={true}
+  >
+    <p class="text-sm font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-4">NBC News</p>
+    <h1 id="page-heading" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 max-w-2xl">
+      NBC News App
+    </h1>
+    <p class="text-base text-gray-400 max-w-xl italic">
+      A few points about the decision making process — by no means a complete list.
+    </p>
+  </PageHero>
 
   <!-- THE CHALLENGES -->
   <section class="bg-white py-16 px-6" aria-labelledby="challenges-heading">

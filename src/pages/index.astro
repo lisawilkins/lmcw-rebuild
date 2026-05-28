@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HelloSection from '../components/HelloSection.astro';
+import SplitSection from '../components/SplitSection.astro';
+import StackedSection from '../components/StackedSection.astro';
+import HumanCenteredSection from '../components/HumanCenteredSection.astro';
 ---
 
 <BaseLayout
@@ -8,92 +11,82 @@ import HelloSection from '../components/HelloSection.astro';
   description="Lisa Wilkins is a UX Director, Product Strategist, and Agentic Builder with 17+ years building products for scale at NBCUniversal, PragerU, and Microsoft."
 >
   <!-- Hero -->
-  <section class="bg-white pt-20 pb-16 px-6" aria-labelledby="hero-heading">
-    <div class="max-w-5xl mx-auto">
-      <h1 id="hero-heading" class="text-5xl md:text-7xl font-extrabold text-[var(--color-charcoal)] leading-none tracking-tight mb-6">
-        Lisa Wilkins
-      </h1>
-      <p class="text-lg md:text-xl font-semibold text-[var(--color-mid-gray)] uppercase tracking-widest">
-        Agentic Builder&nbsp;&nbsp;·&nbsp;&nbsp;UX Director&nbsp;&nbsp;·&nbsp;&nbsp;Product Strategist
-      </p>
+  <section
+    class="relative flex flex-col items-start justify-end min-h-[340px] md:min-h-[380px] lg:min-h-[420px]"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Background layers -->
+    <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-[#EEEEEE] mix-blend-multiply"></div>
+      <img
+        src="/images/home/home-bg-heading.png"
+        alt=""
+        class="absolute inset-0 w-full h-full max-w-none object-cover opacity-25 mix-blend-multiply"
+      />
     </div>
-  </section>
 
-  <!-- Case study 1: NBC News -->
-  <section class="bg-white py-16 px-6 border-t border-[var(--color-border)]" aria-labelledby="nbc-heading">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-      <div>
-        <h2 id="nbc-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-6 leading-tight">
-          Building for scale &amp; flexibility
-        </h2>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-          Solutions for NOW are valuable. Solutions for LATER pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
-        </p>
-        <a
-          href="/projects-nbcapp"
-          class="inline-block mt-4 bg-[var(--color-coral)] hover:bg-[var(--color-coral-hover)] text-white text-sm font-semibold uppercase tracking-widest px-6 py-3 rounded-md transition-colors"
+    <!-- Frosted glass text bar -->
+    <div class="backdrop-blur-[4px] bg-[rgba(252,250,244,0.6)] flex flex-col items-center justify-end py-5 relative shrink-0 w-full">
+      <div class="flex flex-col md:flex-row md:items-end gap-3 w-full max-w-5xl overflow-hidden px-5 py-[30px] text-[var(--color-blue-800)] rounded-lg">
+        <h1
+          id="hero-heading"
+          class="font-light leading-none text-[44px] md:text-[56px] lg:text-[76px] flex-1 min-w-0"
         >
-          View NBC App Redesign
-        </a>
+          Lisa Wilkins
+        </h1>
+        <p class="font-medium leading-normal text-[14px] md:text-[16px] text-right whitespace-pre shrink-0">Agentic Builder  |  UX Director  |  Product Strategist</p>
       </div>
     </div>
   </section>
 
-  <!-- Case study 2: Strategy -->
-  <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="strategy-heading">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-      <div>
-        <h2 id="strategy-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-6 leading-tight">
-          From complexity to clarity
-        </h2>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-          I've made a career of stepping back, finding the signal, and building the simple, scalable structure underneath. Whether inherited or fresh earth, I bring the same approach: distill the chaos into foundational components, align the competing requirements, and deliver a system that serves the product long after the launch.
-        </p>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-          I've built and inherited a platform serving 1.3M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components — work that streamlined delivery cycles by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
-        </p>
-        <a
-          href="/projects-puf"
-          class="inline-block mt-4 bg-[var(--color-slate)] hover:bg-[var(--color-slate-hover)] text-white text-sm font-semibold uppercase tracking-widest px-6 py-3 rounded-md transition-colors"
-        >
-          View Product Strategy Impact
-        </a>
-      </div>
-    </div>
-  </section>
+  <SplitSection
+    id="nbc-heading"
+    heading="Building for scale & flexibility"
+    ctaLabel="View NBC App Redesign"
+    ctaHref="/projects-nbcapp"
+    imageSrc="/images/home/home-scale-nbc.png"
+    imageAlt="A collage of mobile app screens from NBC News brands"
+    imageMaxWidth="575px"
+  >
+    <p slot="body" class="leading-[1.5] text-[var(--color-off-white)] text-[18px] md:text-[20px]">
+      Solutions for NOW are valuable. Solutions for LATER pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
+    </p>
+  </SplitSection>
 
-  <!-- Human Centered interstitial -->
-  <section class="bg-[var(--color-charcoal)] py-12 px-6" aria-label="Human centered">
-    <div class="max-w-5xl mx-auto">
-      <p class="text-5xl md:text-7xl font-extrabold text-white leading-none tracking-tight opacity-15 select-none" aria-hidden="true">
-        HUMAN<br />CENTERED
-      </p>
-    </div>
-  </section>
+  <StackedSection
+    id="strategy-heading"
+    heading="From complexity to clarity"
+    ctaLabel="View Product Strategy Impact"
+    ctaHref="/projects-puf"
+    imageSrc="/images/home/home-complexity.png"
+    imageAlt="A diagram showing product strategy and content organization work"
+  >
+    <p slot="body">
+      I've made a career of stepping back, finding the signal, and building the simple, scalable structure underneath. Whether inherited or fresh earth, I bring the same approach: distill the chaos into foundational components, align the competing requirements, and deliver a system that serves the product long after the launch.
+    </p>
+    <p slot="body">
+      I've built and inherited a platform serving 1.3M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components — work that streamlined delivery cycles by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
+    </p>
+  </StackedSection>
 
-  <!-- Test, learn, pivot -->
-  <section class="bg-white py-16 px-6" aria-labelledby="test-learn-heading">
-    <div class="max-w-5xl mx-auto max-w-2xl">
-      <h2 id="test-learn-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-6 leading-tight">
-        Test, learn, pivot
-      </h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
-        At NBCUniversal and PragerU, I fostered team environments where critical thinking and candid feedback became expected. That foundation made usability testing, market analysis, and data-driven iteration more than process checkboxes; at PragerU, it's how I demonstrated the value of qualitative user testing to an executive team that was initially skeptical.
-      </p>
-    </div>
-  </section>
+  <HumanCenteredSection>
+    <p slot="body">
+      At NBCUniversal and PragerU, I fostered team environments where critical thinking and candid feedback became expected. That foundation made usability testing, market analysis, and data-driven iteration more than process checkboxes; at PragerU, it's how I demonstrated the value of qualitative user testing to an executive team that was initially skeptical.
+    </p>
+  </HumanCenteredSection>
 
-  <!-- Unity section -->
-  <section class="bg-[var(--color-cream)] py-16 px-6" aria-labelledby="unity-heading">
-    <div class="max-w-5xl mx-auto max-w-2xl">
-      <h2 id="unity-heading" class="text-3xl md:text-4xl font-extrabold text-[var(--color-charcoal)] mb-6 leading-tight">
-        Unity nourishes your competitive advantage
-      </h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
-        Early in my career, Sara Fortier's work on North Star Principals reshaped how I think about product leadership. Building a shared vision provides cross-functional partners a single point of alignment. When everyone is building toward the same outcome, collaboration stops being a process problem and becomes a competitive advantage.
-      </p>
-    </div>
-  </section>
+  <StackedSection
+    id="unity-heading"
+    heading="Unity nourishes your competitive advantage"
+    imageSrc="/images/home/home-unity.png"
+    imageAlt="A collage of NBC News app screens across multiple devices"
+    headingColor="var(--color-tan-dark)"
+    textColor="var(--color-tan-dark)"
+  >
+    <p slot="body">
+      Early in my career, <a href="https://x.com/sara_fortier" class="underline">Sara Fortier</a>'s work on <a href="https://outwitly.com/blog/creating-a-vision-for-ux-and-product-development/" target="_blank" class="underline">North Star Principals</a>. reshaped how I think about product leadership. Building a shared vision provides cross-functional partners a single point of alignment. When everyone is building toward the same outcome, collaboration stops being a process problem and becomes a competitive advantage.
+    </p>
+  </StackedSection>
 
   <!-- Leading by example -->
   <section class="bg-white py-16 px-6" aria-labelledby="leading-heading">

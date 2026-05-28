@@ -1,0 +1,120 @@
+---
+/**
+ * StackedSection — full-width image on top, copy block below.
+ * Has light and dark variants; more can be added via the `variant` prop.
+ *
+ * Usage:
+ *   <StackedSection
+ *     id="strategy-heading"
+ *     heading="From complexity to clarity"
+ *     ctaLabel="View Product Strategy Impact"
+ *     ctaHref="/projects-puf"
+ *     imageSrc="/images/home/home-complexity.png"
+ *     imageAlt="Strategy diagram"
+ *   >
+ *     <p slot="body">Body text…</p>
+ *   </StackedSection>
+ */
+
+interface Props {
+  id: string;
+  variant?: 'light' | 'dark';
+  bgColor?: string;
+  heading: string;
+  headingColor?: string;
+  textColor?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  ctaBgColor?: string;
+  ctaBgHoverColor?: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const {
+  id,
+  variant = 'light',
+  bgColor,
+  heading,
+  headingColor,
+  textColor,
+  ctaLabel,
+  ctaHref,
+  ctaBgColor,
+  ctaBgHoverColor,
+  imageSrc,
+  imageAlt,
+} = Astro.props;
+
+// Variant defaults — override individually via explicit props
+const defaults = {
+  light: {
+    bg:          'var(--color-off-white)',
+    headingCol:  'var(--color-blue-800)',
+    textCol:     'var(--color-dark-gray)',
+    ctaBg:       'var(--color-slate)',
+    ctaHover:    'var(--color-slate-hover)',
+  },
+  dark: {
+    bg:          'var(--color-dark-gray)',
+    headingCol:  'var(--color-cream)',
+    textCol:     'var(--color-off-white)',
+    ctaBg:       'var(--color-coral)',
+    ctaHover:    'var(--color-coral-hover)',
+  },
+};
+
+const d = defaults[variant];
+const resolvedBg        = bgColor        ?? d.bg;
+const resolvedHeading   = headingColor   ?? d.headingCol;
+const resolvedText      = textColor      ?? d.textCol;
+const resolvedCtaBg     = ctaBgColor     ?? d.ctaBg;
+const resolvedCtaHover  = ctaBgHoverColor ?? d.ctaHover;
+---
+
+<section
+  id={`section-${id}`}
+  class="w-full"
+  style={`background-color: ${resolvedBg}; --stacked-cta-bg: ${resolvedCtaBg}; --stacked-cta-hover: ${resolvedCtaHover};`}
+  aria-labelledby={id}
+>
+  <div class="flex flex-col items-center px-5 py-[60px] md:py-[40px] lg:py-[80px] gap-[40px] md:gap-[60px]">
+
+    <!-- Image — full width up to 1080px -->
+    <div class="w-full max-w-[1080px]">
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        class="w-full h-auto object-contain"
+      />
+    </div>
+
+    <!-- Copy — max 670px wide -->
+    <div class="w-full max-w-[670px] flex flex-col gap-5 md:gap-8">
+      <h2
+        id={id}
+        class="font-medium leading-[0.9] text-[36px] md:text-[40px] lg:text-[60px]"
+        style={`color: ${resolvedHeading};`}
+      >
+        {heading}
+      </h2>
+
+      <div
+        class="flex flex-col gap-4 text-[18px] md:text-[20px] leading-[1.5]"
+        style={`color: ${resolvedText};`}
+      >
+        <slot name="body" />
+      </div>
+
+      {ctaLabel && ctaHref && (
+        <a
+          href={ctaHref}
+          class="self-start bg-[var(--stacked-cta-bg)] hover:bg-[var(--stacked-cta-hover)] font-semibold text-[16px] text-white px-6 py-4 rounded-[6px] transition-colors shrink-0"
+        >
+          {ctaLabel}
+        </a>
+      )}
+    </div>
+
+  </div>
+</section>
