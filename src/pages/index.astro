@@ -19,11 +19,17 @@ import ConnectSection from '../components/ConnectSection.astro';
     <!-- Background layers -->
     <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
       <div class="absolute inset-0 bg-[#EEEEEE] mix-blend-multiply"></div>
-      <img
-        src="/images/home/home-bg-heading.png"
-        alt=""
-        class="absolute inset-0 w-full h-full max-w-none object-cover opacity-25 mix-blend-multiply"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/images/home/home_bg_heading_1x.webp 1x, /images/home/home_bg_heading_2x.webp 2x"
+        />
+        <img
+          src="/images/home/home-bg-heading.png"
+          alt=""
+          class="absolute inset-0 w-full h-full max-w-none object-cover opacity-25 mix-blend-multiply"
+        />
+      </picture>
     </div>
 
     <!-- Frosted glass text bar -->
@@ -46,6 +52,7 @@ import ConnectSection from '../components/ConnectSection.astro';
     ctaLabel="View NBC App Redesign"
     ctaHref="/projects-nbcapp"
     imageSrc="/images/home/home-scale-nbc.png"
+    imageSrcWebp="/images/home/home_scale_nbc_1x.webp"
     imageAlt="A collage of mobile app screens from NBC News brands"
     imageMaxWidth="575px"
   >
@@ -60,6 +67,7 @@ import ConnectSection from '../components/ConnectSection.astro';
     ctaLabel="View Product Strategy Impact"
     ctaHref="/projects-puf"
     imageSrc="/images/home/home-complexity.png"
+    imageSrcWebp="/images/home/home_complexity_1x.webp"
     imageAlt="A diagram showing product strategy and content organization work"
   >
     <p slot="body">
@@ -80,6 +88,7 @@ import ConnectSection from '../components/ConnectSection.astro';
     id="unity-heading"
     heading="Unity nourishes your competitive advantage"
     imageSrc="/images/home/home-unity.png"
+    imageSrcWebp="/images/home/home_unity_1x.webp"
     imageAlt="A collage of NBC News app screens across multiple devices"
     headingColor="var(--color-tan-dark)"
     textColor="var(--color-tan-dark)"

@@ -13,13 +13,15 @@ import PageHero from '../components/PageHero.astro';
     ariaLabelledby="page-heading"
     bgColor="var(--color-charcoal)"
     bgImage="/images/nbc/nbc-bg-heading.png"
+    imageOpacity={0.35}
     gradientFade={true}
+    minHeight="360px"
   >
     <p class="text-sm font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-4">NBC News</p>
-    <h1 id="page-heading" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 max-w-2xl">
+    <h1 id="page-heading" class="font-medium leading-[0.9] text-[var(--color-off-white)] text-[40px] md:text-[56px] lg:text-[72px] mb-5">
       NBC News App
     </h1>
-    <p class="text-base text-gray-400 max-w-xl italic">
+    <p class="text-base text-[var(--color-off-white)] opacity-60 italic">
       A few points about the decision making process — by no means a complete list.
     </p>
   </PageHero>
@@ -27,38 +29,35 @@ import PageHero from '../components/PageHero.astro';
   <!-- THE CHALLENGES -->
   <section class="bg-white py-16 px-6" aria-labelledby="challenges-heading">
     <div class="max-w-5xl mx-auto">
-      <h2 id="challenges-heading" class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Challenges</h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-        This brief case-study covers two different product launches — an overhaul of an antiquated system and the next release to add features users had been requesting.
-      </p>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-        The overhaul of the NBC News app involved a restructure of the stack, updates to the coding languages, new curation tools for editors and a new mobile API. The design language was updated to complement a news design system we called Bento. The restructure allowed editors greater flexibility for any storytelling situation while enabling content sharing between brands. Feature users requested were prioritized and ad revenue opportunities added in to help keep the lights on.
-      </p>
+      <h2 id="challenges-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Challenges</h2>
+      <div class="max-w-2xl">
+        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
+          This brief case-study covers two different product launches — an overhaul of an antiquated system and the next release to add features users had been requesting.
+        </p>
+        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+          The overhaul of the NBC News app involved a restructure of the stack, updates to the coding languages, new curation tools for editors and a new mobile API. The design language was updated to complement a news design system we called <a href="https://nbcnews.design/" target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--color-coral)] transition-colors">Bento</a>. The restructure allowed editors greater flexibility for any storytelling situation while enabling content sharing between brands. Features users requested were prioritized and ad revenue opportunities added in to help keep the lights on.
+        </p>
+      </div>
 
       <div class="grid md:grid-cols-3 gap-10 mt-12">
-        <!-- Scope -->
         <div>
-          <h3 class="text-sm font-extrabold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Scope</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Scope</h3>
           <p class="text-sm text-[var(--color-dark-gray)] leading-relaxed">
-            Complete restructure of the tech stack, migration to modern coding languages, new curation tools for editors, and a new mobile API. Design language updated to align with NBC News' Bento design system.
+            Complete restructure of the tech stack, migration to modern coding languages, the introduction of new curation tools for editors, and a new mobile API. The design language was updated to align with NBC News' Bento design system.
           </p>
         </div>
-
-        <!-- Goals -->
         <div>
-          <h3 class="text-sm font-extrabold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Goals</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Goals</h3>
           <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-2">
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Increase video starts and conversions</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Boost video completion rates</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Increase awareness of the full breadth of content and media types</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Fully transition to the Bento Design System</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Establish a flexible framework for future expansion and scale</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Increase video starts and conversions</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Boost video completion rates</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Increase awareness of the full breadth of content and media types</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Fully transition to the Bento Design System</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Establish a flexible framework for future expansion and scale</li>
           </ul>
         </div>
-
-        <!-- Team -->
         <div>
-          <h3 class="text-sm font-extrabold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Team</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Team</h3>
           <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-1">
             <li>Product Manager</li>
             <li>Creative Director</li>
@@ -75,35 +74,57 @@ import PageHero from '../components/PageHero.astro';
   <!-- THE ACTIONS -->
   <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="actions-heading">
     <div class="max-w-5xl mx-auto">
-      <h2 id="actions-heading" class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Actions</h2>
+      <h2 id="actions-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Actions</h2>
       <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-12 max-w-2xl">
         Highlight &amp; promote NBCU's expansive video content library. Allow editorial to package contents thematically with flexible visual presentations using the new layout system. Provide convenient localization features for end-users. Build a brand-agnostic system that can be implemented across multiple properties.
       </p>
 
-      <!-- Before / After -->
-      <div class="grid md:grid-cols-2 gap-10 mb-16">
-        <div class="bg-white rounded-lg p-8">
-          <h3 class="text-sm font-extrabold uppercase tracking-widest text-[var(--color-mid-gray)] mb-6">Before</h3>
-          <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-3">
-            <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5">—</span>Editorial curations limited to a couple key areas</li>
-            <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5">—</span>2 page templates for information display</li>
-            <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5">—</span>Few entry points to video</li>
-            <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5">—</span>Dated design language</li>
-            <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5">—</span>No real marketing plan</li>
-            <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5">—</span>Limited revenue opportunities</li>
-          </ul>
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <!-- Before -->
+        <div class="bg-white rounded-lg overflow-hidden">
+          <figure>
+            <img
+              src="/images/nbc/nbc-before.png"
+              alt="NBC News app before the redesign — older layout with limited editorial flexibility"
+              class="w-full h-auto"
+              loading="lazy"
+            />
+          </figure>
+          <div class="p-8">
+            <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-mid-gray)] mb-6">Before</h3>
+            <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-3">
+              <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5 shrink-0">—</span>Editorial curations limited to a couple key areas</li>
+              <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5 shrink-0">—</span>2 page templates for information display</li>
+              <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5 shrink-0">—</span>Few entry points to video</li>
+              <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5 shrink-0">—</span>Dated design language</li>
+              <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5 shrink-0">—</span>No real marketing plan</li>
+              <li class="flex gap-2"><span class="text-[var(--color-mid-gray)] font-bold mt-0.5 shrink-0">—</span>Limited revenue opportunities</li>
+            </ul>
+          </div>
         </div>
-        <div class="bg-white rounded-lg p-8">
-          <h3 class="text-sm font-extrabold uppercase tracking-widest text-[var(--color-coral)] mb-6">After</h3>
-          <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-3">
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Editorial flexibility with content, layout, and overwrites</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Multi-page templates to best showcase content types and enhance storytelling</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Featured videos with dedicated sections to represent shows and live coverage</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Design language and atomic system in sync with web and OTT platforms</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Marketing can key in on specific users, events, and topics</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Audio for broadcast shows and NOW channel</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5">→</span>Ads embedded in content, and as pre-, mid-, and post-roll in a new video player</li>
-          </ul>
+
+        <!-- After -->
+        <div class="bg-white rounded-lg overflow-hidden">
+          <figure>
+            <img
+              src="/images/nbc/nbc-after.png"
+              alt="NBC News app after the redesign — modernized layout with video showcase, editorial flexibility"
+              class="w-full h-auto"
+              loading="lazy"
+            />
+          </figure>
+          <div class="p-8">
+            <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-6">After</h3>
+            <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-3">
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Editorial flexibility with content, layout, and overwrites</li>
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Multi-page templates to best showcase content types and enhance storytelling</li>
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Featured videos with dedicated sections to represent shows and live coverage</li>
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Design language and atomic system in sync with web and OTT platforms</li>
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Marketing can key in on specific users, events, and topics</li>
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Audio for broadcast shows and NOW channel</li>
+              <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Ads embedded in content, and as pre-, mid-, and post-roll in a new video player</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -112,11 +133,11 @@ import PageHero from '../components/PageHero.astro';
   <!-- THE PLAN -->
   <section class="bg-white py-16 px-6" aria-labelledby="plan-heading">
     <div class="max-w-5xl mx-auto">
-      <h2 id="plan-heading" class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-coral)] mb-12">The Plan</h2>
+      <h2 id="plan-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-12">The Plan</h2>
 
       <!-- Ideation -->
       <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-2">Ideation</h3>
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-2">Ideation</h3>
         <p class="text-sm font-semibold text-[var(--color-mid-gray)] uppercase tracking-widest mb-4">A mature org knows that good ideas come from anywhere.</p>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           Multiple teams — product, marketing, engineering, data insights — gathered to pitch ideas, make sketches and kick off a direction we believed would have merit. The data insights team provided market research to help form our direction and resolve conflicting opinions.
@@ -124,24 +145,56 @@ import PageHero from '../components/PageHero.astro';
       </div>
 
       <!-- Double Diamond -->
-      <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">The best of intentions</h3>
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">The best of intentions</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           Our process was a version of the Google Design Sprint method combined with the Double Diamond design method from the British Design Council. Occasionally the process would turn slightly sideways — which is totally fine. Sometimes amazing ideas come out of initial chaos.
         </p>
       </div>
+      <figure class="max-w-3xl mb-16">
+        <img
+          src="/images/nbc/nbc-dubD.png"
+          alt="Double Diamond design process diagram showing Discover, Define, Develop, and Deliver phases"
+          class="w-full h-auto rounded-lg"
+          loading="lazy"
+        />
+      </figure>
 
-      <!-- Notifications -->
-      <div class="bg-[var(--color-light-bg)] rounded-lg p-8 max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Present, not persistent</h3>
+      <!-- Reminders are good -->
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Reminders are good.</h3>
+        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+          A good reminder from data insights was that breaking news is still the most important feature to be refined. It inspired thinking about notification cadence, frequency, and inboxing. It also helped us narrow our focus on a set of features that would have the most impact for this launch — live video, audio, localization.
+        </p>
+      </div>
+      <figure class="max-w-3xl mb-16">
+        <img
+          src="/images/nbc/nbc-marketReminder.png"
+          alt="Market research slide: Getting breaking news notifications is the most valued feature in the app, with 31% preference share"
+          class="w-full h-auto rounded-lg"
+          loading="lazy"
+        />
+      </figure>
+
+      <!-- Present, not persistent -->
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Present, not persistent</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           When mobile users are facing notification burnout, how do you determine which breaking alerts are "important" vs. "vitally important"? I assessed the use cases for a variety of notifications, then sent those into testing and research to help define the limits of annoyance. A push service that specialized in geo-targeting and delayed sends kept the app alerts from being a nuisance. User preferences could also determine if they received the alert.
         </p>
       </div>
+      <figure class="max-w-3xl mb-16">
+        <img
+          src="/images/nbc/nbc-notifs.png"
+          alt="Notification Variations research document and user test notes on personalized push notifications"
+          class="w-full h-auto rounded-lg"
+          loading="lazy"
+        />
+      </figure>
 
       <!-- Pain Points -->
       <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Pain Points</h3>
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Pain Points</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           We interviewed editorial to learn what their current pain points were for the existing CMS. The list was massive, but it came down to layout flexibility, overwriting content (while retaining the originals) and selected automations.
         </p>
@@ -149,31 +202,63 @@ import PageHero from '../components/PageHero.astro';
 
       <!-- Editorial Freedom -->
       <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Editorial Freedom</h3>
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Editorial Freedom</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           Layout packages were produced to give the editorial team easy, flexible methods for different news scenarios and tempos. Similar content types could be manually curated together for deep storytelling opportunities. Sections could remain fully or partially automated to ensure the content was always fresh with limited editorial lift.
         </p>
       </div>
 
       <!-- Wires & Proofs -->
-      <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Wires &amp; Proofs</h3>
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Wires &amp; Proofs</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           I set up the image ratio list and samples of how the images were used in various components. This was presented to the editorial team to ensure we had enough flexibility within each set of components. We were advised by the art department that the image ratios we included would fit their storytelling needs.
         </p>
       </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mb-16">
+        <figure>
+          <img
+            src="/images/nbc/nbc-sketches.png"
+            alt="Hand-drawn sketches for the notifications feature — roadblock alerts, embedded notifications, and alerts screen concepts"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+          <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
+            Initial sketches on notification cadence and in-app alert concepts.
+          </figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/images/nbc/nbc-hero-variations.png"
+            alt="Examples of editorial layout variations showing different image sizes and content hierarchy in the NBC News app"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+          <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
+            Examples of how image size and repeatable elements can set hierarchy.
+          </figcaption>
+        </figure>
+      </div>
 
       <!-- Mobile CMS -->
-      <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Mobile CMS</h3>
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Mobile CMS</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           Internal tools were built for the mobile app — none existed previously when 90% of the content was auto-fed by mobile APIs. The new internal CMS allowed editors to change layouts, overwrite copy, reorder and pin, and choose whether a component would be auto-fed or 100% manually curated.
         </p>
       </div>
+      <figure class="max-w-2xl mb-16">
+        <img
+          src="/images/nbc/nbc-mobile-cms.png"
+          alt="Mobile CMS interface showing package options, component type selection, and real-time phone preview with annotated features"
+          class="w-full h-auto rounded-lg"
+          loading="lazy"
+        />
+      </figure>
 
       <!-- User Testing -->
       <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">User Testing</h3>
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">User Testing</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
           We tested across TODAY Show and NBC News app users. 78% of News app users responded overwhelmingly positively with the increased video access, and 62% were very satisfied that they could find everything about a storyline in one place. Both cohorts appreciated bigger images and better organization.
         </p>
@@ -183,30 +268,41 @@ import PageHero from '../components/PageHero.astro';
       </div>
 
       <!-- Marketing -->
-      <div class="max-w-2xl">
-        <h3 class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Marketing</h3>
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Marketing</h3>
         <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           Prior to the official launch we worked with Marketing and Brand teams to create a promotional sizzle reel. It was used at media events, with press releases, and as a Preview asset in the app stores.
         </p>
       </div>
+      <figure class="max-w-4xl mb-8">
+        <img
+          src="/images/nbc/nbc-storyboard.png"
+          alt="Marketing sizzle reel storyboard showing the new NBC News app launch video beats — intro, transition to cover, zoom on live video"
+          class="w-full h-auto rounded-lg"
+          loading="lazy"
+        />
+        <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
+          The initial beats on the storyboard for the marketing launch video.
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- THE RESULTS -->
   <section class="bg-[var(--color-coral)] py-16 px-6" aria-label="Results">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xs font-extrabold uppercase tracking-widest text-white opacity-70 mb-12">The Results</h2>
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-white opacity-70 mb-12">The Results</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="text-white">
-          <p class="text-6xl md:text-7xl font-extrabold leading-none mb-3">+25%</p>
+          <p class="font-medium leading-none text-[60px] md:text-[72px] mb-3">+25%</p>
           <p class="text-sm font-semibold uppercase tracking-widest opacity-80">Increase in average videos viewed per video visit in NBC News app</p>
         </div>
         <div class="text-white">
-          <p class="text-6xl md:text-7xl font-extrabold leading-none mb-3">+51%</p>
+          <p class="font-medium leading-none text-[60px] md:text-[72px] mb-3">+51%</p>
           <p class="text-sm font-semibold uppercase tracking-widest opacity-80">Video starts across the mobile app portfolio — from 9M to 13.6M</p>
         </div>
         <div class="text-white">
-          <p class="text-6xl md:text-7xl font-extrabold leading-none mb-3">+20%</p>
+          <p class="font-medium leading-none text-[60px] md:text-[72px] mb-3">+20%</p>
           <p class="text-sm font-semibold uppercase tracking-widest opacity-80">Increase in Monthly Active Users, from 920K to 1.1M</p>
         </div>
       </div>
@@ -215,21 +311,37 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Showcase Video -->
   <section class="bg-white py-16 px-6" aria-labelledby="showcase-heading">
-    <div class="max-w-5xl mx-auto max-w-2xl">
-      <h2 id="showcase-heading" class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Showcase Video</h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+    <div class="max-w-5xl mx-auto">
+      <h2 id="showcase-heading" class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Showcase Video</h2>
+      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed max-w-2xl mb-10">
         Elevated video with prominent placement on the home screen, while allowing articles, videos, live streams, and podcasts to coexist seamlessly. Users gained access to short-, medium-, and long-form video options, plus audio alternatives for when video viewing isn't ideal.
       </p>
+      <figure class="max-w-sm">
+        <img
+          src="/images/nbc/nbc-moreVideo.png"
+          alt="Three phone screens showing the redesigned NBC News app — home feed, video watch section, and THINK editorial section"
+          class="w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 
   <!-- Scale to Brands -->
   <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="scale-heading">
-    <div class="max-w-5xl mx-auto max-w-2xl">
-      <h2 id="scale-heading" class="text-2xl font-extrabold text-[var(--color-charcoal)] mb-4">Scale to Brands</h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+    <div class="max-w-5xl mx-auto">
+      <h2 id="scale-heading" class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Scale to Brands</h2>
+      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed max-w-2xl mb-10">
         Everything we created was built to be brand-agnostic. The system was used to update the TODAY Show and Telemundo Noticias, and experiments were also done to show how Sky World News editorial and marketing teams might benefit from these updates.
       </p>
+      <figure class="max-w-sm">
+        <img
+          src="/images/nbc/nbc-brandScale.png"
+          alt="Three phones showing the brand-agnostic design system applied across NBC News, TODAY, and Telemundo Noticias apps"
+          class="w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 

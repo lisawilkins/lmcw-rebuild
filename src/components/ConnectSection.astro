@@ -19,11 +19,17 @@
   <!-- ── Background ─────────────────────────────────────────────── -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <div class="absolute inset-0 bg-[var(--color-blue-800)]"></div>
-    <img
-      src="/images/home/connect-bg-01.png"
-      alt=""
-      class="absolute inset-0 w-full h-full max-w-none object-cover opacity-20"
-    />
+    <picture>
+      <source
+        type="image/webp"
+        srcset="/images/home/connect_bg_01_1x.webp 1x, /images/home/connect_bg_01_2x.webp 2x"
+      />
+      <img
+        src="/images/home/connect-bg-01.png"
+        alt=""
+        class="absolute inset-0 w-full h-full max-w-none object-cover opacity-20"
+      />
+    </picture>
   </div>
 
   <!-- ── Content ────────────────────────────────────────────────── -->
@@ -39,11 +45,17 @@
           Hello!
         </h2>
         <div class="w-full aspect-square rounded-[8px] overflow-hidden">
-          <img
-            src="/images/home/connect-bio-pic-01.png"
-            alt="Lisa Wilkins"
-            class="w-full h-full object-cover"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/images/home/connect_bio_pic_01_1x.webp 1x, /images/home/connect_bio_pic_01_2x.webp 2x"
+            />
+            <img
+              src="/images/home/connect-bio-pic-01.png"
+              alt="Lisa Wilkins"
+              class="w-full h-full object-cover"
+            />
+          </picture>
         </div>
       </div>
 

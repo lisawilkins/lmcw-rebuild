@@ -1,0 +1,48 @@
+---
+description: Standards and references for the lisawilkins.com portfolio rebuild
+alwaysApply: true
+---
+
+# Portfolio Rebuild — Project Standards
+
+This project rebuilds lisawilkins.com from Figma Sites into a coded Astro + Tailwind CSS site deployed to Netlify.
+
+Full plan: `/Users/lisawilkins/.cursor/plans/portfolio_rebuild_astro_b94db9e2.plan.md`
+
+## Design References
+
+- **Live site:** https://www.lisawilkins.com
+- **Figma Site file (primary):** https://www.figma.com/site/xUxdmk3djYdKXqXvsjBW7t/2025Portfolio?node-id=0-1&t=uqDSPTB7bVjsXbIY-1
+  - Shows all 3 pages at desktop, tablet, and mobile breakpoints
+  - This is the file that builds the live site — use it as the visual source of truth
+
+## Rebuild Rules
+
+- **Replicate exactly.** Match every visible aspect: fonts, type sizes and weights, colors, spacing, layout, images, copy, and links. Approximations are not acceptable.
+- **Use the design system.** Tokens are defined in `src/styles/globals.css`. Use them — do not use hardcoded hex values or generic Tailwind utilities where a token exists.
+- **Ask before guessing.** If a section's layout or visual treatment cannot be confirmed from the live URL, ask for a Figma link, screenshot, or description before proceeding.
+
+## Stack
+
+- Framework: Astro 5 (static)
+- Styling: Tailwind CSS v4
+- Fonts: Barlow (body, 400/600/800) + Alegreya (headings) via `@fontsource`
+- Hosting: Netlify via GitHub
+
+## Page Structure
+
+| Route | File |
+|---|---|
+| `/` | `src/pages/index.astro` |
+| `/projects-nbcapp` | `src/pages/projects-nbcapp.astro` |
+| `/projects-puf` | `src/pages/projects-puf.astro` |
+| `#connect` | `src/components/HelloSection.astro` (anchor, not a separate page) |
+
+## Key Files
+
+- Design tokens: `src/styles/globals.css`
+- Layout wrapper: `src/layouts/BaseLayout.astro`
+- Nav (global): `src/components/Header.astro`
+- Footer (global): `src/components/Footer.astro`
+- Hello/bio section: `src/components/HelloSection.astro`
+- Images: `public/images/` (organized by page: `home/`, `nbc/`, `strategy/`, `og/`)

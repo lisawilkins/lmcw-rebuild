@@ -28,6 +28,8 @@ interface Props {
   ctaBgColor?: string;
   ctaBgHoverColor?: string;
   imageSrc: string;
+  imageSrcWebp?: string;
+  imageSrcWebp2x?: string;
   imageAlt: string;
 }
 
@@ -43,6 +45,8 @@ const {
   ctaBgColor,
   ctaBgHoverColor,
   imageSrc,
+  imageSrcWebp,
+  imageSrcWebp2x,
   imageAlt,
 } = Astro.props;
 
@@ -82,11 +86,17 @@ const resolvedCtaHover  = ctaBgHoverColor ?? d.ctaHover;
 
     <!-- Image — full width up to 1080px -->
     <div class="w-full max-w-[1080px]">
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        class="w-full h-auto object-contain"
-      />
+      {imageSrcWebp ? (
+        <picture>
+          <source
+            type="image/webp"
+            srcset={imageSrcWebp2x ? `${imageSrcWebp} 1x, ${imageSrcWebp2x} 2x` : imageSrcWebp}
+          />
+          <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+        </picture>
+      ) : (
+        <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+      )}
     </div>
 
     <!-- Copy — max 670px wide -->
