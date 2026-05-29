@@ -46,8 +46,8 @@
   --color-warning: #FFC107;
   --color-info: #17A2B8;
 
-  /* Base */
-  --color-white: #FFFFFF;
+  /* Base — no pure white; use off-white for light surfaces */
+  --color-off-white: #FCFAF4;
 
   /* Semantic aliases (backward compatible with existing markup) */
   --color-coral: var(--color-primary);
@@ -56,7 +56,6 @@
   --color-slate-hover: var(--color-blue-700);
   --color-cream: #F7EFD5;
   --color-cream-light: #EDE4C7;
-  --color-off-white: #FCFAF4;
   --color-tan-dark: #3B3524;
   --color-light-bg: var(--color-gray-100);
   --color-charcoal: var(--color-gray-900);
@@ -99,7 +98,7 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-charcoal);
-  background-color: var(--color-white);
+  background-color: var(--color-off-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
