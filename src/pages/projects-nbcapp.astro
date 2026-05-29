@@ -135,7 +135,7 @@ const editorialHeroCards = [
         </div>
 
         <!-- After -->
-        <div class="grid md:grid-cols-[1fr_2fr] gap-x-12 gap-y-8 items-center">
+        <div class="grid md:grid-cols-[1fr_2fr] gap-x-12 gap-y-8 items-start">
           <div>
             <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-6">After</h3>
             <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-2">
@@ -148,21 +148,30 @@ const editorialHeroCards = [
               <li class="flex gap-2"><span class="shrink-0">·</span>Ads embedded in content, and as pre-, mid-, and post-roll in a new video player</li>
             </ul>
           </div>
-          <figure>
-            <div class="overflow-hidden rounded-lg after-marquee flex">
-              <ResponsiveImage
-                root="nbc"
-                folder="nbc_after"
-                alt="NBC News app after the redesign — modernized layout with video showcase and editorial flexibility"
-                class="h-[355px] w-auto max-w-none shrink-0"
-              />
-              <ResponsiveImage
-                root="nbc"
-                folder="nbc_after"
-                alt=""
-                class="h-[355px] w-auto max-w-none shrink-0"
-                aria-hidden={true}
-              />
+          <figure class="min-w-0">
+            <div
+              class="overflow-hidden rounded-lg"
+              aria-label="NBC News app after the redesign — modernized layout with video showcase, editorial flexibility"
+            >
+              <div class="after-marquee flex w-max">
+                <img
+                  src="/images/nbc/nbc_after/nbc_after_1x.webp"
+                  alt="NBC News app after the redesign — modernized layout with video showcase and editorial flexibility"
+                  width="1080"
+                  height="332"
+                  class="h-[355px] w-auto max-w-none shrink-0"
+                  loading="lazy"
+                />
+                <img
+                  src="/images/nbc/nbc_after/nbc_after_1x.webp"
+                  alt=""
+                  width="1080"
+                  height="332"
+                  aria-hidden="true"
+                  class="h-[355px] w-auto max-w-none shrink-0"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </figure>
         </div>
