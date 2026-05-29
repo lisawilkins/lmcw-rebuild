@@ -92,6 +92,11 @@
 /* Base */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+#connect {
+  scroll-margin-top: 4rem;
 }
 
 body {

@@ -75,5 +75,57 @@ const jsonLdGraph = buildJsonLdGraph(jsonLd);
       <slot />
     </main>
     <Footer />
+    <script>
+      const HEADER_OFFSET = 64;
+
+      function closeMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const toggle = document.getElementById('mobile-menu-toggle');
+        menu?.classList.add('hidden');
+        toggle?.setAttribute('aria-expanded', 'false');
+        toggle?.setAttribute('aria-label', 'Open navigation menu');
+      }
+
+      function scrollToConnect(smooth = true) {
+        const target = document.getElementById('connect');
+        if (!target) return;
+
+        const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+        window.scrollTo({ top: Math.max(0, top), behavior: smooth ? 'smooth' : 'auto' });
+      }
+
+      function navigateToConnect() {
+        closeMobileMenu();
+
+        if (window.location.hash !== '#connect') {
+          history.replaceState(null, '', '#connect');
+        }
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            scrollToConnect(true);
+
+            // Lazy-loaded images below the fold can shift layout after the first scroll.
+            [100, 300, 600, 1000].forEach((delay) => {
+              window.setTimeout(() => scrollToConnect(false), delay);
+            });
+          });
+        });
+      }
+
+      function initConnectNavigation() {
+        document.querySelectorAll('a[href="#connect"]').forEach((link) => {
+          if (link.dataset.connectNavInit === 'true') return;
+          link.dataset.connectNavInit = 'true';
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateToConnect();
+          });
+        });
+      }
+
+      initConnectNavigation();
+      document.addEventListener('astro:page-load', initConnectNavigation);
+    </script>
   </body>
 </html>
