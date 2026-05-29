@@ -5,11 +5,20 @@ import StackedSection from '../components/StackedSection.astro';
 import HumanCenteredSection from '../components/HumanCenteredSection.astro';
 import LeadingByExampleSection from '../components/LeadingByExampleSection.astro';
 import ConnectSection from '../components/ConnectSection.astro';
+import { SITE_URL } from '../data/site';
+import { profilePageNode } from '../utils/jsonLd';
+
+const canonicalUrl = `${SITE_URL}/`;
+const pageTitle = 'Lisa Wilkins | UX Design & Strategy';
+const pageDescription =
+  'Lisa Wilkins is a UX Director, Product Strategist, and Agentic Builder with 17+ years building products for scale at NBCUniversal, PragerU, and Microsoft.';
 ---
 
 <BaseLayout
-  title="Lisa Wilkins | UX Design & Strategy"
-  description="Lisa Wilkins is a UX Director, Product Strategist, and Agentic Builder with 17+ years building products for scale at NBCUniversal, PragerU, and Microsoft."
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  jsonLd={[profilePageNode(canonicalUrl, pageTitle)]}
 >
   <!-- Hero -->
   <section
@@ -25,7 +34,7 @@ import ConnectSection from '../components/ConnectSection.astro';
           srcset="/images/home/home_bg_heading_1x.webp 1x, /images/home/home_bg_heading_2x.webp 2x"
         />
         <img
-          src="/images/home/home-bg-heading.png"
+          src="/images/home/home_bg_heading_2x.webp"
           alt=""
           class="absolute inset-0 w-full h-full max-w-none object-cover opacity-25 mix-blend-multiply"
         />
@@ -57,7 +66,7 @@ import ConnectSection from '../components/ConnectSection.astro';
     imageMaxWidth="575px"
   >
     <p slot="body" class="leading-[1.5] text-[var(--color-off-white)] text-[18px] md:text-[20px]">
-      Solutions for NOW are valuable. Solutions for LATER pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
+      Solutions for now are valuable. Solutions for later pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
     </p>
   </SplitSection>
 
@@ -71,10 +80,10 @@ import ConnectSection from '../components/ConnectSection.astro';
     imageAlt="A diagram showing product strategy and content organization work"
   >
     <p slot="body">
-      I've made a career of stepping back, finding the signal, and building the simple, scalable structure underneath. Whether inherited or fresh earth, I bring the same approach: distill the chaos into foundational components, align the competing requirements, and deliver a system that serves the product long after the launch.
+      Whether inherited or fresh earth, I bring the same approach: distill the chaos into foundational components, align the competing requirements, and deliver a system that serves the product long after the launch.
     </p>
     <p slot="body">
-      I've built and inherited a platform serving 1.3M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components — work that streamlined delivery cycles by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
+      I've built and inherited platforms serving 1.2M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components,resulting in delivery cycles streamlined by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
     </p>
   </StackedSection>
 

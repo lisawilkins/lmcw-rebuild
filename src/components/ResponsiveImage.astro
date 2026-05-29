@@ -1,0 +1,37 @@
+---
+import { responsiveWebp, type ImageRoot, type WebpDensity } from '../utils/responsiveWebp';
+
+interface Props {
+  root: ImageRoot;
+  folder: string;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+  defaultDensity?: WebpDensity;
+  'aria-hidden'?: boolean | 'true' | 'false';
+}
+
+const {
+  root,
+  folder,
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  sizes,
+  defaultDensity = '2x',
+  'aria-hidden': ariaHidden,
+} = Astro.props;
+
+const { src, srcset } = responsiveWebp(root, folder, defaultDensity);
+---
+
+<img
+  src={src}
+  srcset={srcset}
+  sizes={sizes}
+  alt={alt}
+  class={className}
+  loading={loading}
+  aria-hidden={ariaHidden}
+/>

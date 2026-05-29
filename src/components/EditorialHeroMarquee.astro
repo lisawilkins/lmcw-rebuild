@@ -9,18 +9,10 @@ interface Props {
   cards: HeroCard[];
 }
 
+import { responsiveWebp } from '../utils/responsiveWebp';
+
 const { cards } = Astro.props;
 const trackCards = [...cards, ...cards];
-
-function heroSrc(base: string, density: string) {
-  return `/images/nbc/${base}/${base}_${density}.webp`;
-}
-
-function heroSrcset(base: string) {
-  return ['1x', '2x', '3x', '4x']
-    .map((d) => `${heroSrc(base, d)} ${d}`)
-    .join(', ');
-}
 ---
 
 <div
@@ -31,19 +23,22 @@ function heroSrcset(base: string) {
 >
   <div class="editorial-hero-marquee-track">
     {
-      trackCards.map(({ base, alt }, i) => (
-        <figure class="editorial-hero-marquee-card" role="listitem">
-          <img
-            src={heroSrc(base, '2x')}
-            srcset={heroSrcset(base)}
-            sizes="200px"
-            alt={i < cards.length ? alt : ''}
-            aria-hidden={i >= cards.length}
-            width="200"
-            loading="lazy"
-          />
-        </figure>
-      ))
+      trackCards.map(({ base, alt }, i) => {
+        const { src, srcset } = responsiveWebp('nbc', base);
+        return (
+          <figure class="editorial-hero-marquee-card" role="listitem">
+            <img
+              src={src}
+              srcset={srcset}
+              sizes="200px"
+              alt={i < cards.length ? alt : ''}
+              aria-hidden={i >= cards.length}
+              width="200"
+              loading="lazy"
+            />
+          </figure>
+        );
+      })
     }
   </div>
 </div>

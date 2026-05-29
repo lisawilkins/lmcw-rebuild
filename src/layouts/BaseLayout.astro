@@ -2,22 +2,26 @@
 import '../styles/globals.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { buildJsonLdGraph } from '../utils/jsonLd';
 
 interface Props {
   title: string;
   description: string;
   canonicalUrl?: string;
   ogImage?: string;
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
   title,
   description,
   canonicalUrl = Astro.url.href,
-  ogImage = '/og/default.png',
+  ogImage = '/images/og/og-social.png',
+  jsonLd = [],
 } = Astro.props;
 
-const GA_ID = import.meta.env.PUBLIC_GA_ID;
+const GA_ID = import.meta.env.PUBLIC_GA_ID ?? 'G-CMCEEBE9G8';
+const jsonLdGraph = buildJsonLdGraph(jsonLd);
 ---
 
 <!doctype html>
@@ -46,20 +50,8 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
     <!-- Favicon placeholder -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- JSON-LD: Person -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Lisa Wilkins",
-        "url": "https://www.lisawilkins.com",
-        "jobTitle": "UX Director & Product Strategist",
-        "description": "UX Director, Product Strategist, and Agentic Builder with 17+ years of experience.",
-        "sameAs": [
-          "https://www.linkedin.com/in/lisawilkins"
-        ]
-      }
-    </script>
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdGraph)} />
 
     <!-- Google Analytics -->
     {GA_ID && (

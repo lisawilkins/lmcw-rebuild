@@ -8,6 +8,7 @@
  * Layout: "Hello!" + square bio pic on the left, copy + links on the right.
  * Stacks vertically on mobile.
  */
+import { EMAIL, LINKEDIN_URL } from '../data/site';
 ---
 
 <section
@@ -65,7 +66,7 @@
         <!-- Bio paragraphs -->
         <div class="flex flex-col gap-3 text-[16px] md:text-[20px] leading-[1.45]">
           <p>
-            I'm Lisa Wilkins. I've spent 17+ years as a UX director, designer, and product strategist building things people actually want to use — across media, news, tech, and education at organizations like NBCUniversal, PragerU, and Microsoft. I live in the Sonoran Desert, which inspires me daily with its simplicity on the surface and complexity underneath. I'm adaptable, resilient, and nerdy — ask me about WCAG compliance or horse training and you'll get the same enthusiasm. I'm most proud of raising a son full of gratitude and spoiling a very good dog.
+            I'm Lisa Wilkins. I've spent 17+ years as a UX director, designer, and product strategist building things people actually want to use — across media, news, tech, and education at organizations like NBCUniversal, PragerU, and Microsoft. I live in the Sonoran Desert, which inspires me daily with its simplicity on the surface and complexity underneath. I'm adaptable, resilient, and nerdy: ask me about WCAG compliance or things equestian and you'll get the same enthusiasm. I'm most proud of raising a son full of gratitude and spoiling some very good horses.
           </p>
           <p>
             Let's talk about what I can build with your team.
@@ -75,7 +76,7 @@
         <!-- Contact links -->
         <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-5 font-semibold text-[20px] md:text-[24px] leading-none">
           <a
-            href="mailto:hello@lisawilkins.com"
+            href={`mailto:${EMAIL}`}
             class="underline underline-offset-4 decoration-2 whitespace-nowrap hover:text-[var(--color-cream)] transition-colors"
             aria-label="Send an email"
           >
@@ -83,7 +84,7 @@
           </a>
           <span class="hidden md:inline" aria-hidden="true">•</span>
           <a
-            href="https://www.linkedin.com/in/lisamwilkins/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="underline underline-offset-4 decoration-2 whitespace-nowrap hover:text-[var(--color-cream)] transition-colors"

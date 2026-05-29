@@ -4,6 +4,14 @@ import ConnectSection from '../components/ConnectSection.astro';
 import EditorialHeroMarquee from '../components/EditorialHeroMarquee.astro';
 import MarketingSizzleVideo from '../components/MarketingSizzleVideo.astro';
 import PageHero from '../components/PageHero.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { SITE_URL } from '../data/site';
+import { creativeWorkNode } from '../utils/jsonLd';
+
+const canonicalUrl = `${SITE_URL}/projects-nbcapp/`;
+const pageTitle = 'NBC News App — Lisa Wilkins';
+const pageDescription =
+  'How Lisa Wilkins redesigned the NBC News app — restructuring the tech stack, introducing a flexible editorial system, and scaling the Bento design system across NBC News, TODAY, and Telemundo.';
 
 const editorialHeroCards = [
   { base: 'nbc_hero_none', alt: 'NBC News app layout with no hero image' },
@@ -18,14 +26,24 @@ const editorialHeroCards = [
 ---
 
 <BaseLayout
-  title="NBC News App — Lisa Wilkins"
-  description="How Lisa Wilkins redesigned the NBC News app — restructuring the tech stack, introducing a flexible editorial system, and scaling the Bento design system across NBC News, TODAY, and Telemundo."
-  ogImage="/og/nbc-news.png"
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  jsonLd={[
+    creativeWorkNode({
+      name: 'NBC News App',
+      description: pageDescription,
+      url: canonicalUrl,
+      about: 'NBCUniversal',
+    }),
+  ]}
 >
   <PageHero
     ariaLabelledby="page-heading"
     bgColor="var(--color-charcoal)"
     bgImage="/images/nbc/nbc-bg-heading.png"
+    bgImageWebpRoot="nbc"
+    bgImageWebpFolder="nbc_bg_heading"
     imageOpacity={0.35}
     gradientFade={true}
     minHeight="360px"
@@ -48,7 +66,7 @@ const editorialHeroCards = [
           This brief case-study covers two different product launches — an overhaul of an antiquated system and the next release to add features users had been requesting.
         </p>
         <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
-          The overhaul of the NBC News app involved a restructure of the stack, updates to the coding languages, new curation tools for editors and a new mobile API. The design language was updated to complement a news design system we called <a href="https://nbcnews.design/" target="_blank" rel="noopener noreferrer" class="underline opacity-90 hover:text-[var(--color-coral)] transition-colors">Bento</a>. The restructure allowed editors greater flexibility for any storytelling situation while enabling content sharing between brands. Features users requested were prioritized and ad revenue opportunities added in to help keep the lights on.
+          The overhaul of the NBC News app involved a restructure of the stack, updates to the coding languages, new curation tools for editors and a new mobile API. The design language was updated to complement a news design system we called <a href="https://medium.com/nbc-news-digital/title-tbd-be861a60d2dc" target="_blank" rel="noopener noreferrer" class="underline opacity-90 hover:text-[var(--color-coral)] transition-colors">Bento</a>. The restructure allowed editors greater flexibility for any storytelling situation while enabling content sharing between brands. Features users requested were prioritized and ad revenue opportunities added in to help keep the lights on.
         </p>
       </div>
 
@@ -107,11 +125,11 @@ const editorialHeroCards = [
             </ul>
           </div>
           <figure>
-            <img
-              src="/images/nbc/nbc-before.png"
+            <ResponsiveImage
+              root="nbc"
+              folder="nbc_before"
               alt="NBC News app before the redesign — older layout with limited editorial flexibility"
               class="w-full h-auto"
-              loading="lazy"
             />
           </figure>
         </div>
@@ -130,23 +148,23 @@ const editorialHeroCards = [
               <li class="flex gap-2"><span class="shrink-0">·</span>Ads embedded in content, and as pre-, mid-, and post-roll in a new video player</li>
             </ul>
           </div>
-          <div class="overflow-hidden rounded-lg" aria-label="NBC News app after the redesign — modernized layout with video showcase, editorial flexibility">
-            <div class="after-marquee flex">
-              <img
-                src="/images/nbc/nbc-after.png"
-                alt=""
+          <figure>
+            <div class="overflow-hidden rounded-lg after-marquee flex">
+              <ResponsiveImage
+                root="nbc"
+                folder="nbc_after"
+                alt="NBC News app after the redesign — modernized layout with video showcase and editorial flexibility"
                 class="h-[355px] w-auto max-w-none shrink-0"
-                loading="lazy"
               />
-              <img
-                src="/images/nbc/nbc-after.png"
+              <ResponsiveImage
+                root="nbc"
+                folder="nbc_after"
                 alt=""
-                aria-hidden="true"
                 class="h-[355px] w-auto max-w-none shrink-0"
-                loading="lazy"
+                aria-hidden={true}
               />
             </div>
-          </div>
+          </figure>
         </div>
       </div>
     </div>
@@ -167,11 +185,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0">
-          <img
-            src="/images/nbc/nbc-sketches.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_sketches"
             alt="Hand-drawn sketches for the notifications feature — roadblock alerts, embedded notifications, and alerts screen concepts"
             class="w-full h-auto rounded-lg"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -185,11 +203,11 @@ const editorialHeroCards = [
       </div>
       <div class="flex flex-col md:flex-row gap-4 max-w-4xl mb-16 items-start">
         <figure>
-          <img
-            src="/images/nbc/nbc-dubD.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_dubd"
             alt="Double Diamond design process diagram showing Discover, Define, Develop, and Deliver phases"
             class="block h-[260px] w-auto rounded-lg"
-            loading="lazy"
           />
         </figure>
         <figure>
@@ -211,11 +229,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0">
-          <img
-            src="/images/nbc/nbc-marketReminder.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_marketreminder"
             alt="Market research slide: Getting breaking news notifications is the most valued feature in the app, with 31% preference share"
             class="w-full h-auto rounded-lg"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -229,11 +247,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0">
-          <img
-            src="/images/nbc/nbc-notifs.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_notifs"
             alt="Notification Variations research document and user test notes on personalized push notifications"
             class="w-full h-auto rounded-lg"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -254,11 +272,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0">
-          <img
-            src="/images/nbc/nbc-editorial.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_editorial"
             alt="Editorial pain points research — app packaging challenges and homepage package review from the CMS audit"
             class="w-full h-auto rounded-lg"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -302,11 +320,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0 max-w-[500px]">
-          <img
-            src="/images/nbc/nbc-mobile-cms.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_mobile_cms"
             alt="Mobile CMS interface showing package options, component type selection, and real-time phone preview with annotated features"
             class="w-full h-auto rounded-lg"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -335,12 +353,12 @@ const editorialHeroCards = [
         role="region"
         aria-label="User testing results across NBC brands — scroll vertically to view the full image"
       >
-        <img
-          src="/images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_2x.webp"
-          srcset="/images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_1x.webp 1x, /images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_2x.webp 2x, /images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_3x.webp 3x, /images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_4x.webp 4x"
+        <ResponsiveImage
+          root="nbc"
+          folder="nbc_user_testing_across_brands_1"
+          sizes="(max-width: 650px) 100vw, 650px"
           alt="User testing results comparing satisfaction and feature preferences across TODAY Show and NBC News app users"
           class="block w-full h-auto"
-          loading="lazy"
         />
       </div>
 
@@ -357,11 +375,11 @@ const editorialHeroCards = [
         </div>
       </div>
       <figure class="mx-auto max-w-[700px] mb-0">
-        <img
-          src="/images/nbc/nbc-storyboard.png"
+        <ResponsiveImage
+          root="nbc"
+          folder="nbc_storyboard"
           alt="Marketing sizzle reel storyboard showing the new NBC News app launch video beats — intro, transition to cover, zoom on live video"
           class="w-full h-auto rounded-lg"
-          loading="lazy"
         />
         <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
           The initial beats on the storyboard for the marketing launch video.
@@ -403,11 +421,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0 max-w-sm">
-          <img
-            src="/images/nbc/nbc-moreVideo.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_morevideo"
             alt="Three phone screens showing the redesigned NBC News app — home feed, video watch section, and THINK editorial section"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -425,11 +443,11 @@ const editorialHeroCards = [
           </p>
         </div>
         <figure class="flex-1 min-w-0 max-w-sm">
-          <img
-            src="/images/nbc/nbc-brandScale.png"
+          <ResponsiveImage
+            root="nbc"
+            folder="nbc_brandscale"
             alt="Three phones showing the brand-agnostic design system applied across NBC News, TODAY, and Telemundo Noticias apps"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
         </figure>
       </div>

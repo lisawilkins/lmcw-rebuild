@@ -3,32 +3,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CategoryIconMarquee from '../components/CategoryIconMarquee.astro';
 import ConnectSection from '../components/ConnectSection.astro';
 import PageHero from '../components/PageHero.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { SITE_URL } from '../data/site';
+import { creativeWorkNode } from '../utils/jsonLd';
+
+const canonicalUrl = `${SITE_URL}/projects-puf/`;
+const pageTitle = 'Product Strategy & Content Organization — Lisa Wilkins';
+const pageDescription =
+  "How Lisa Wilkins transformed PragerU's content discovery — categorizing 2,000+ videos, reorganizing 500+ personalities, and boosting video page engagement by 36%.";
 
 const categoryIcons = [
-  { src: '/images/strategy/strat-puf-cat-amval.png',   alt: 'American Values category icon' },
-  { src: '/images/strategy/strat-puf-cat-econ.png',    alt: 'Economics category icon' },
-  { src: '/images/strategy/strat-puf-cat-econ-1.png',  alt: 'Education category icon' },
-  { src: '/images/strategy/strat-puf-cat-energy.png',  alt: 'Energy category icon' },
-  { src: '/images/strategy/strat-puf-cat-finlit.png',  alt: 'Financial Literacy category icon' },
-  { src: '/images/strategy/strat-puf-cat-gender.png',  alt: 'Gender category icon' },
-  { src: '/images/strategy/strat-puf-cat-growth.png',  alt: 'Personal Growth category icon' },
-  { src: '/images/strategy/strat-puf-cat-health.png',  alt: 'Health category icon' },
-  { src: '/images/strategy/strat-puf-cat-immig.png',   alt: 'Immigration category icon' },
-  { src: '/images/strategy/strat-puf-cat-law.png',     alt: 'Law & Justice category icon' },
-  { src: '/images/strategy/strat-puf-cat-science.png', alt: 'Science category icon' },
-  { src: '/images/strategy/strat-puf-cat-world.png',   alt: 'World History category icon' },
+  { folder: 'strat_puf_cat_amval',   alt: 'American Values category icon' },
+  { folder: 'strat_puf_cat_econ',    alt: 'Economics category icon' },
+  { src: '/images/strategy/strat-puf-cat-econ-1.png', alt: 'Education category icon' },
+  { folder: 'strat_puf_cat_energy',  alt: 'Energy category icon' },
+  { folder: 'strat_puf_cat_finlit',  alt: 'Financial Literacy category icon' },
+  { folder: 'strat_puf_cat_gender',  alt: 'Gender category icon' },
+  { folder: 'strat_puf_cat_growth',  alt: 'Personal Growth category icon' },
+  { folder: 'strat_puf_cat_health',  alt: 'Health category icon' },
+  { folder: 'strat_puf_cat_immig',   alt: 'Immigration category icon' },
+  { folder: 'strat_puf_cat_law',     alt: 'Law & Justice category icon' },
+  { folder: 'strat_puf_cat_science', alt: 'Science category icon' },
+  { folder: 'strat_puf_cat_world',   alt: 'World History category icon' },
 ];
 ---
 
 <BaseLayout
-  title="Product Strategy & Content Organization — Lisa Wilkins"
-  description="How Lisa Wilkins transformed PragerU's content discovery — categorizing 2,000+ videos, reorganizing 500+ personalities, and boosting video page engagement by 36%."
-  ogImage="/og/strategy.png"
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  jsonLd={[
+    creativeWorkNode({
+      name: 'Product Strategy & Content Organization',
+      description: pageDescription,
+      url: canonicalUrl,
+      about: 'PragerU',
+    }),
+  ]}
 >
   <PageHero
     ariaLabelledby="page-heading"
     bgColor="var(--color-charcoal)"
     bgImage="/images/strategy/strat-bg-heading.png"
+    bgImageWebpRoot="strategy"
+    bgImageWebpFolder="strat_bg_heading"
     imageOpacity={0.35}
     gradientFade={true}
     scrimColor="var(--color-charcoal)"
@@ -120,11 +138,11 @@ const categoryIcons = [
           </p>
         </div>
         <figure class="shrink-0 w-full md:w-[280px] lg:w-[320px]">
-          <img
-            src="/images/strategy/puf-presenters.png"
+          <ResponsiveImage
+            root="strategy"
+            folder="puf_presenters"
             alt="Diagram showing four PragerU personalities tagged with color-coded role indicators — Guest (gold), Presenter (blue), and Host (red)"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
         </figure>
       </div>
@@ -144,11 +162,11 @@ const categoryIcons = [
           </p>
         </div>
         <figure class="shrink-0 w-full md:w-[280px] lg:w-[400px]">
-          <img
-            src="/images/strategy/puf-cross.png"
+          <ResponsiveImage
+            root="strategy"
+            folder="puf_cross"
             alt="Two UI mockups: an email subscription form and a promotional card for Celebrate America board game"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
           <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
             Cross-promotional section — email capture for non-logged-in users, campaign promotion for logged-in users.
@@ -171,11 +189,11 @@ const categoryIcons = [
           </p>
         </div>
         <figure class="shrink-0 w-full md:w-[280px] lg:w-[400px]">
-          <img
-            src="/images/strategy/puf-reactions.png"
+          <ResponsiveImage
+            root="strategy"
+            folder="puf_reactions"
             alt="User reaction flow — thumbs up or down after a video; positive responses lead to a donation ask, negative responses to feedback and alternative video recommendations"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
           <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
             Reaction-driven engagement — vote, donate, collect feedback, or discover related content.

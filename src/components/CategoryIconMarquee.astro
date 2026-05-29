@@ -1,6 +1,11 @@
 ---
+import { responsiveWebp } from '../utils/responsiveWebp';
+
 interface Icon {
-  src: string;
+  /** WebP folder under /images/strategy/, e.g. strat_puf_cat_amval */
+  folder?: string;
+  /** PNG fallback when no WebP folder exists */
+  src?: string;
   alt: string;
 }
 
@@ -21,11 +26,21 @@ const trackIcons = [...icons, ...icons];
 >
   <div class="category-marquee-track">
     {
-      trackIcons.map(({ src, alt }, i) => (
-        <figure class="category-marquee-card" role="listitem">
-          <img src={src} alt={i < icons.length ? alt : ''} aria-hidden={i >= icons.length} loading="lazy" />
-        </figure>
-      ))
+      trackIcons.map((icon, i) => {
+        const { folder, src: pngSrc, alt } = icon;
+        const webp = folder ? responsiveWebp('strategy', folder) : null;
+        return (
+          <figure class="category-marquee-card" role="listitem">
+            <img
+              src={webp?.src ?? pngSrc}
+              srcset={webp?.srcset}
+              alt={i < icons.length ? alt : ''}
+              aria-hidden={i >= icons.length}
+              loading="lazy"
+            />
+          </figure>
+        );
+      })
     }
   </div>
 </div>
