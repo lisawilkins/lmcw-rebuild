@@ -1,35 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CategoryIconMarquee from '../components/CategoryIconMarquee.astro';
 import ConnectSection from '../components/ConnectSection.astro';
 import PageHero from '../components/PageHero.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { SITE_URL } from '../data/site';
+import { creativeWorkNode } from '../utils/jsonLd';
+
+const canonicalUrl = `${SITE_URL}/projects-puf/`;
+const pageTitle = 'Product Strategy & Content Organization — Lisa Wilkins';
+const pageDescription =
+  "How Lisa Wilkins transformed PragerU's content discovery — categorizing 2,000+ videos, reorganizing 500+ personalities, and boosting video page engagement by 36%.";
 
 const categoryIcons = [
-  { src: '/images/strategy/strat-puf-cat-amval.png',   alt: 'American Values category icon' },
-  { src: '/images/strategy/strat-puf-cat-econ.png',    alt: 'Economics category icon' },
-  { src: '/images/strategy/strat-puf-cat-econ-1.png',  alt: 'Education category icon' },
-  { src: '/images/strategy/strat-puf-cat-energy.png',  alt: 'Energy category icon' },
-  { src: '/images/strategy/strat-puf-cat-finlit.png',  alt: 'Financial Literacy category icon' },
-  { src: '/images/strategy/strat-puf-cat-gender.png',  alt: 'Gender category icon' },
-  { src: '/images/strategy/strat-puf-cat-growth.png',  alt: 'Personal Growth category icon' },
-  { src: '/images/strategy/strat-puf-cat-health.png',  alt: 'Health category icon' },
-  { src: '/images/strategy/strat-puf-cat-immig.png',   alt: 'Immigration category icon' },
-  { src: '/images/strategy/strat-puf-cat-law.png',     alt: 'Law & Justice category icon' },
-  { src: '/images/strategy/strat-puf-cat-science.png', alt: 'Science category icon' },
-  { src: '/images/strategy/strat-puf-cat-world.png',   alt: 'World History category icon' },
+  { folder: 'strat_puf_cat_amval',   alt: 'American Values category icon' },
+  { folder: 'strat_puf_cat_econ',    alt: 'Economics category icon' },
+  { src: '/images/strategy/strat-puf-cat-econ-1.png', alt: 'Education category icon' },
+  { folder: 'strat_puf_cat_energy',  alt: 'Energy category icon' },
+  { folder: 'strat_puf_cat_finlit',  alt: 'Financial Literacy category icon' },
+  { folder: 'strat_puf_cat_gender',  alt: 'Gender category icon' },
+  { folder: 'strat_puf_cat_growth',  alt: 'Personal Growth category icon' },
+  { folder: 'strat_puf_cat_health',  alt: 'Health category icon' },
+  { folder: 'strat_puf_cat_immig',   alt: 'Immigration category icon' },
+  { folder: 'strat_puf_cat_law',     alt: 'Law & Justice category icon' },
+  { folder: 'strat_puf_cat_science', alt: 'Science category icon' },
+  { folder: 'strat_puf_cat_world',   alt: 'World History category icon' },
 ];
 ---
 
 <BaseLayout
-  title="Product Strategy & Content Organization — Lisa Wilkins"
-  description="How Lisa Wilkins transformed PragerU's content discovery — categorizing 2,000+ videos, reorganizing 500+ personalities, and boosting video page engagement by 36%."
-  ogImage="/og/strategy.png"
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  jsonLd={[
+    creativeWorkNode({
+      name: 'Product Strategy & Content Organization',
+      description: pageDescription,
+      url: canonicalUrl,
+      about: 'PragerU',
+    }),
+  ]}
 >
   <PageHero
     ariaLabelledby="page-heading"
-    bgColor="var(--color-slate)"
+    bgColor="var(--color-charcoal)"
     bgImage="/images/strategy/strat-bg-heading.png"
+    bgImageWebpRoot="strategy"
+    bgImageWebpFolder="strat_bg_heading"
     imageOpacity={0.35}
     gradientFade={true}
+    scrimColor="var(--color-charcoal)"
+    grayscale={true}
     minHeight="360px"
   >
     <p class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] opacity-70 mb-4">Strategy</p>
@@ -39,32 +60,32 @@ const categoryIcons = [
   </PageHero>
 
   <!-- THE CHALLENGES -->
-  <section class="bg-[var(--color-off-white)] py-16 px-6" aria-labelledby="challenges-heading">
-    <div class="max-w-5xl mx-auto">
-      <h2 id="challenges-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-slate)] mb-6">The Challenges</h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-12 max-w-2xl">
+  <section class="bg-[var(--color-charcoal)] py-16 px-6" aria-labelledby="challenges-heading">
+    <div class="max-w-[1080px] mx-auto">
+      <h2 id="challenges-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Challenges</h2>
+      <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed mb-12 max-w-2xl">
         Users were coming to the PragerU home page with no clear path to discover content. Basic categorization for a video streaming service was missing. Bounce rates on video pages were &gt;90%. No clear incentive for users to engage with the service and minimal cross-promotional opportunities were available.
       </p>
 
       <div class="grid md:grid-cols-3 gap-10">
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Scope</h3>
-          <p class="text-sm text-[var(--color-dark-gray)] leading-relaxed">
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] mb-4">Scope</h3>
+          <p class="text-sm text-[var(--color-off-white)] opacity-70 leading-relaxed">
             Display content in a variety of ways without adding to the editorial workload. Create more incentive for users to create an account and/or subscribe. Expand the concept of video personalities to allow for multiple hosts, guests, and a full browse feature. Add cross-promotional areas to showcase new features, videos, and campaigns.
           </p>
         </div>
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Goals</h3>
-          <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-2">
-            <li class="flex gap-2"><span class="text-[var(--color-slate)] font-bold mt-0.5 shrink-0">→</span>Increase user account creation and subscription conversions by 15%</li>
-            <li class="flex gap-2"><span class="text-[var(--color-slate)] font-bold mt-0.5 shrink-0">→</span>Reduce bounce rate on video pages by 20%</li>
-            <li class="flex gap-2"><span class="text-[var(--color-slate)] font-bold mt-0.5 shrink-0">→</span>Improve user content discovery satisfaction</li>
-            <li class="flex gap-2"><span class="text-[var(--color-slate)] font-bold mt-0.5 shrink-0">→</span>Reduce the overall lift for the internal editorial team</li>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] mb-4">Goals</h3>
+          <ul class="text-sm text-[var(--color-off-white)] opacity-70 leading-relaxed space-y-2">
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Increase user account creation and subscription conversions by 15%</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Reduce bounce rate on video pages by 20%</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Improve user content discovery satisfaction</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Reduce the overall lift for the internal editorial team</li>
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Team</h3>
-          <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-1">
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] mb-4">Team</h3>
+          <ul class="text-sm text-[var(--color-off-white)] opacity-70 leading-relaxed space-y-1">
             <li>UX Director</li>
             <li>1 Offsite UI Designer</li>
             <li>2 Engineers (1 Offsite)</li>
@@ -77,8 +98,8 @@ const categoryIcons = [
   </section>
 
   <!-- THE ACTIONS -->
-  <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="actions-heading">
-    <div class="max-w-5xl mx-auto">
+  <section class="bg-[var(--color-off-white)] py-16 px-6" aria-labelledby="actions-heading">
+    <div class="max-w-[1080px] mx-auto">
       <h2 id="actions-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-slate)] mb-6">The Actions</h2>
       <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-16 max-w-2xl">
         Categorize all video content to allow easier discovery and build a base for future user customization and subscription features. Provide easy methods to subscribe, join, and engage. Add cross-promotional areas on key page types. Organize the content and personalities to improve search and SEO.
@@ -100,25 +121,11 @@ const categoryIcons = [
           I then created 20 core categories to cover the full breadth of content. Executive leadership increased this to 25 categories, and the art department designed custom icons for each. This new category structure not only improved content organization but also laid the foundation for a future "personal goals" feature for users with paid subscriptions.
         </p>
       </div>
+    </div>
 
-      <!-- Category icon grid -->
-      <div
-        class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-16"
-        role="list"
-        aria-label="PragerU content category icons"
-      >
-        {categoryIcons.map(({ src, alt }) => (
-          <figure role="listitem" class="flex flex-col items-center">
-            <img
-              src={src}
-              alt={alt}
-              class="w-full h-auto rounded-lg"
-              loading="lazy"
-            />
-          </figure>
-        ))}
-      </div>
+    <CategoryIconMarquee icons={categoryIcons} />
 
+    <div class="max-w-[1080px] mx-auto">
       <!-- Personalities -->
       <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-16">
         <div class="flex-1 min-w-0">
@@ -131,49 +138,65 @@ const categoryIcons = [
           </p>
         </div>
         <figure class="shrink-0 w-full md:w-[280px] lg:w-[320px]">
-          <img
-            src="/images/strategy/puf-presenters.png"
+          <ResponsiveImage
+            root="strategy"
+            folder="puf_presenters"
             alt="Diagram showing four PragerU personalities tagged with color-coded role indicators — Guest (gold), Presenter (blue), and Host (red)"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
         </figure>
       </div>
 
       <!-- Subscribe & Cross-Promote -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Subscribe &amp; Cross-Promote</h3>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-          To boost user engagement, I added a multi-purpose section to all video pages that served two key functions.
-        </p>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
-          First, for non-logged-in users, it featured a simple email collection form. Users who were impressed or drawn in by a video were 4x more likely to subscribe to email marketing when the opportunity was readily available.
-        </p>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
-          Second, for logged-in users (or when designated by the marketing team), the same section dynamically promoted new content, upcoming features, and active fundraising campaigns.
-        </p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mb-16">
-        <figure>
-          <img
-            src="/images/strategy/puf-cross.png"
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-16">
+        <div class="flex-1 min-w-0">
+          <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Subscribe &amp; Cross-Promote</h3>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
+            To boost user engagement, I added a multi-purpose section to all video pages that served two key functions.
+          </p>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
+            First, for non-logged-in users, it featured a simple email collection form. Users who were impressed or drawn in by a video were 4x more likely to subscribe to email marketing when the opportunity was readily available.
+          </p>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+            Second, for logged-in users (or when designated by the marketing team), the same section dynamically promoted new content, upcoming features, and active fundraising campaigns.
+          </p>
+        </div>
+        <figure class="shrink-0 w-full md:w-[280px] lg:w-[400px]">
+          <ResponsiveImage
+            root="strategy"
+            folder="puf_cross"
             alt="Two UI mockups: an email subscription form and a promotional card for Celebrate America board game"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
           <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
             Cross-promotional section — email capture for non-logged-in users, campaign promotion for logged-in users.
           </figcaption>
         </figure>
-        <figure>
-          <img
-            src="/images/strategy/puf-reactions.png"
-            alt="User reaction flow — thumbs up/down prompt after video, positive response triggers a donation ask with smart follow-up"
+      </div>
+
+      <!-- Engagement and provocation -->
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-16">
+        <div class="flex-1 min-w-0">
+          <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Engagement and provocation</h3>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
+            After each video, users were prompted to vote thumbs up or down. That simple signal gave content production and leadership valuable insight into what resonated, and what did not.
+          </p>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
+            Supporters who voted up were encouraged to financially support more videos like the one they had just watched, creating an additional, consistent revenue stream tied directly to positive engagement.
+          </p>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+            Detractors who voted down could share more detail through a rating scale or a free-form text field. Inviting that feedback gave users a satisfying outlet to be heard, supplied PragerU with richer consumer sentiment data, and supported warm lead generation when sentiment was submitted after an email was entered. When someone did not like a given video, the flow could would cross-promote other videos they might prefer instead.
+          </p>
+        </div>
+        <figure class="shrink-0 w-full md:w-[280px] lg:w-[400px]">
+          <ResponsiveImage
+            root="strategy"
+            folder="puf_reactions"
+            alt="User reaction flow — thumbs up or down after a video; positive responses lead to a donation ask, negative responses to feedback and alternative video recommendations"
             class="w-full h-auto rounded-xl"
-            loading="lazy"
           />
           <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
-            Reaction-driven engagement — positive video reactions surfaced targeted fundraising opportunities.
+            Reaction-driven engagement — vote, donate, collect feedback, or discover related content.
           </figcaption>
         </figure>
       </div>
@@ -182,7 +205,7 @@ const categoryIcons = [
 
   <!-- THE RESULTS -->
   <section class="bg-[var(--color-slate)] py-16 px-6" aria-label="Results">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-[1080px] mx-auto">
       <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--color-off-white)] opacity-70 mb-12">The Results</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="text-[var(--color-off-white)]">
@@ -202,13 +225,13 @@ const categoryIcons = [
   </section>
 
   <!-- Back nav -->
-  <section class="bg-[var(--color-off-white)] py-10 px-6 border-t border-[var(--color-border)]">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/projects-nbcapp" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
-        &larr; NBC News
+  <section class="bg-[var(--color-charcoal)] py-10 px-6 border-t border-white/10">
+    <div class="max-w-[1080px] mx-auto flex items-center justify-between">
+      <a href="/" class="nav-link text-sm text-[var(--color-off-white)] opacity-70 hover:text-[var(--color-coral)] hover:opacity-100 transition-colors">
+        &larr; Home
       </a>
-      <a href="#connect" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
-        Connect &rarr;
+      <a href="/projects-nbcapp" class="nav-link text-sm text-[var(--color-off-white)] opacity-70 hover:text-[var(--color-coral)] hover:opacity-100 transition-colors">
+        NBC News &rarr;
       </a>
     </div>
   </section>

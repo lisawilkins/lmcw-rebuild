@@ -1,0 +1,148 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+}
+
+const { src, title = 'NBC News app marketing sizzle reel' } = Astro.props;
+---
+
+<div class="sizzle-video" data-sizzle-video>
+  <div class="sizzle-video-media">
+    <video
+      class="sizzle-video-element"
+      src={src}
+      muted
+      playsinline
+      preload="metadata"
+      aria-label={title}
+    />
+  </div>
+  <div class="sizzle-video-controls" role="group" aria-label="Video playback controls">
+    <button type="button" class="sizzle-video-btn" data-play-pause aria-label="Play video">
+      <svg class="sizzle-video-icon sizzle-video-icon--play" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M6.5 4.5 15 10l-8.5 5.5V4.5Z" />
+      </svg>
+      <svg class="sizzle-video-icon sizzle-video-icon--pause" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" hidden>
+        <path d="M6 4h2.5v12H6V4Zm5.5 0H14v12h-2.5V4Z" />
+      </svg>
+    </button>
+    <button type="button" class="sizzle-video-btn" data-mute aria-label="Unmute video">
+      <svg class="sizzle-video-icon sizzle-video-icon--muted" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M3.5 7.5h2.75L9 5v10l-2.75-2.5H3.5v-5Zm9.1 1.4 1.05-1.05a5.25 5.25 0 0 1 0 7.4l-1.05-1.05a3.75 3.75 0 0 0 0-5.3Zm2.35-2.35 1.05-1.05a7.75 7.75 0 0 1 0 11l-1.05-1.05a6.25 6.25 0 0 0 0-8.9Z" />
+        <path d="m14.2 5.8 1 1-9.4 9.4-1-1 9.4-9.4Z" />
+      </svg>
+      <svg class="sizzle-video-icon sizzle-video-icon--unmuted" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" hidden>
+        <path d="M3.5 7.5h2.75L9 5v10l-2.75-2.5H3.5v-5Zm9.1 1.4 1.05-1.05a5.25 5.25 0 0 1 0 7.4l-1.05-1.05a3.75 3.75 0 0 0 0-5.3Zm2.35-2.35 1.05-1.05a7.75 7.75 0 0 1 0 11l-1.05-1.05a6.25 6.25 0 0 0 0-8.9Z" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .sizzle-video-media {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: var(--color-charcoal);
+  }
+
+  .sizzle-video-element {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .sizzle-video-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-3);
+  }
+
+  .sizzle-video-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--color-cream-light);
+    border-radius: var(--radius-md);
+    background-color: var(--color-off-white);
+    color: var(--color-charcoal);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .sizzle-video-btn:hover {
+    color: var(--color-coral);
+    border-color: var(--color-coral);
+  }
+
+  .sizzle-video-btn:focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 2px;
+  }
+
+  .sizzle-video-icon {
+    display: block;
+  }
+
+  .sizzle-video-icon[hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  function initSizzleVideo() {
+    document.querySelectorAll<HTMLElement>('[data-sizzle-video]').forEach((root) => {
+      if (root.dataset.sizzleVideoInit === 'true') return;
+      root.dataset.sizzleVideoInit = 'true';
+
+      const video = root.querySelector<HTMLVideoElement>('.sizzle-video-element');
+      const playPauseBtn = root.querySelector<HTMLButtonElement>('[data-play-pause]');
+      const muteBtn = root.querySelector<HTMLButtonElement>('[data-mute]');
+      const playIcon = root.querySelector<SVGElement>('.sizzle-video-icon--play');
+      const pauseIcon = root.querySelector<SVGElement>('.sizzle-video-icon--pause');
+      const mutedIcon = root.querySelector<SVGElement>('.sizzle-video-icon--muted');
+      const unmutedIcon = root.querySelector<SVGElement>('.sizzle-video-icon--unmuted');
+
+      if (!video || !playPauseBtn || !muteBtn) return;
+
+      const setPlayingUi = (playing: boolean) => {
+        playPauseBtn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+        playIcon?.toggleAttribute('hidden', playing);
+        pauseIcon?.toggleAttribute('hidden', !playing);
+      };
+
+      const setMutedUi = (muted: boolean) => {
+        muteBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+        mutedIcon?.toggleAttribute('hidden', !muted);
+        unmutedIcon?.toggleAttribute('hidden', muted);
+      };
+
+      setPlayingUi(false);
+      setMutedUi(video.muted);
+
+      playPauseBtn.addEventListener('click', () => {
+        if (video.paused) {
+          void video.play();
+        } else {
+          video.pause();
+        }
+      });
+
+      muteBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        setMutedUi(video.muted);
+      });
+
+      video.addEventListener('play', () => setPlayingUi(true));
+      video.addEventListener('pause', () => setPlayingUi(false));
+      video.addEventListener('ended', () => setPlayingUi(false));
+    });
+  }
+
+  initSizzleVideo();
+  document.addEventListener('astro:page-load', initSizzleVideo);
+</script>

@@ -5,11 +5,20 @@ import StackedSection from '../components/StackedSection.astro';
 import HumanCenteredSection from '../components/HumanCenteredSection.astro';
 import LeadingByExampleSection from '../components/LeadingByExampleSection.astro';
 import ConnectSection from '../components/ConnectSection.astro';
+import { SITE_URL } from '../data/site';
+import { profilePageNode } from '../utils/jsonLd';
+
+const canonicalUrl = `${SITE_URL}/`;
+const pageTitle = 'Lisa Wilkins | UX Design & Strategy';
+const pageDescription =
+  'Lisa Wilkins is a UX Director, Product Strategist, and Agentic Builder with 17+ years building products for scale at NBCUniversal, PragerU, and Microsoft.';
 ---
 
 <BaseLayout
-  title="Lisa Wilkins | UX Design & Strategy"
-  description="Lisa Wilkins is a UX Director, Product Strategist, and Agentic Builder with 17+ years building products for scale at NBCUniversal, PragerU, and Microsoft."
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  jsonLd={[profilePageNode(canonicalUrl, pageTitle)]}
 >
   <!-- Hero -->
   <section
@@ -25,7 +34,7 @@ import ConnectSection from '../components/ConnectSection.astro';
           srcset="/images/home/home_bg_heading_1x.webp 1x, /images/home/home_bg_heading_2x.webp 2x"
         />
         <img
-          src="/images/home/home-bg-heading.png"
+          src="/images/home/home_bg_heading_2x.webp"
           alt=""
           class="absolute inset-0 w-full h-full max-w-none object-cover opacity-25 mix-blend-multiply"
         />
@@ -34,7 +43,7 @@ import ConnectSection from '../components/ConnectSection.astro';
 
     <!-- Frosted glass text bar -->
     <div class="backdrop-blur-[4px] bg-[rgba(252,250,244,0.6)] flex flex-col items-center justify-end py-5 relative shrink-0 w-full">
-      <div class="flex flex-col md:flex-row md:items-end gap-3 w-full max-w-5xl overflow-hidden px-5 py-[30px] text-[var(--color-blue-800)] rounded-lg">
+      <div class="flex flex-col md:flex-row md:items-end gap-3 w-full max-w-[1080px] overflow-hidden px-5 py-[30px] text-[var(--color-blue-800)] rounded-lg">
         <h1
           id="hero-heading"
           class="font-light leading-none text-[44px] md:text-[56px] lg:text-[76px] flex-1 min-w-0"
@@ -57,13 +66,13 @@ import ConnectSection from '../components/ConnectSection.astro';
     imageMaxWidth="575px"
   >
     <p slot="body" class="leading-[1.5] text-[var(--color-off-white)] text-[18px] md:text-[20px]">
-      Solutions for NOW are valuable. Solutions for LATER pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
+      Solutions for now are valuable. Solutions for later pay you back. At NBCUniversal, I architected component systems and content frameworks across NBC News, TODAY, and Telemundo that supported 1.5M+ daily users, and kept scaling through two full app redesigns with a flexible foundation. That meant understanding the tech stack deeply enough to design for future growth.
     </p>
   </SplitSection>
 
   <StackedSection
     id="strategy-heading"
-    heading="From complexity to clarity"
+    heading="Clarity from complexity"
     ctaLabel="View Product Strategy Impact"
     ctaHref="/projects-puf"
     imageSrc="/images/home/home-complexity.png"
@@ -71,10 +80,10 @@ import ConnectSection from '../components/ConnectSection.astro';
     imageAlt="A diagram showing product strategy and content organization work"
   >
     <p slot="body">
-      I've made a career of stepping back, finding the signal, and building the simple, scalable structure underneath. Whether inherited or fresh earth, I bring the same approach: distill the chaos into foundational components, align the competing requirements, and deliver a system that serves the product long after the launch.
+      Whether inherited or fresh earth, I bring the same approach: distill the chaos into foundational components, align the competing requirements, and deliver a system that serves the product long after the launch.
     </p>
     <p slot="body">
-      I've built and inherited a platform serving 1.3M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components — work that streamlined delivery cycles by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
+      I've built and inherited platforms serving 1.2M+ monthly users across web, mobile, and OTT with no unified content architecture. I distilled convoluted user journeys, organized content taxonomies, and broke down competing business requirements into foundational components,resulting in delivery cycles streamlined by 43% and extended well beyond any single release. The hardest, yet most rewarding, part of design is making things simple.
     </p>
   </StackedSection>
 
@@ -86,12 +95,13 @@ import ConnectSection from '../components/ConnectSection.astro';
 
   <StackedSection
     id="unity-heading"
-    heading="Unity nourishes your competitive advantage"
+    heading="Unity is your competitive advantage"
     imageSrc="/images/home/home-unity.png"
     imageSrcWebp="/images/home/home_unity_1x.webp"
     imageAlt="A collage of NBC News app screens across multiple devices"
     headingColor="var(--color-tan-dark)"
     textColor="var(--color-tan-dark)"
+    imageBleed={true}
   >
     <p slot="body">
       Early in my career, <a href="https://x.com/sara_fortier" class="underline">Sara Fortier</a>'s work on <a href="https://outwitly.com/blog/creating-a-vision-for-ux-and-product-development/" target="_blank" class="underline">North Star Principals</a>. reshaped how I think about product leadership. Building a shared vision provides cross-functional partners a single point of alignment. When everyone is building toward the same outcome, collaboration stops being a process problem and becomes a competitive advantage.

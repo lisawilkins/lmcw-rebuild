@@ -3,6 +3,10 @@
  * SplitSection — reusable two-column layout: copy left, image right (desktop/tablet).
  * On mobile the image stacks above the copy.
  *
+ * At viewports ≥ 1080px the copy column is anchored to the left edge of the
+ * 1080px content area (540px wide) and the image column bleeds to the
+ * viewport's right edge (or left edge when imagePosition="left").
+ *
  * Usage:
  *   <SplitSection
  *     id="nbc-heading"
@@ -62,14 +66,14 @@ const imageOnLeft = imagePosition === 'left';
 
 <section
   id={`section-${id}`}
-  class="bg-[var(--split-bg)]"
+  class="split-section bg-[var(--split-bg)] overflow-x-clip"
   style={`--split-bg: ${bgColor}; --split-heading-color: ${headingColor}; --split-cta-bg: ${ctaBgColor}; --split-cta-hover: ${ctaBgHoverColor};`}
   aria-labelledby={id}
 >
-  <div class="flex flex-col md:flex-row gap-[10px] md:gap-[20px] lg:gap-[40px] items-center justify-center py-[60px] md:py-[40px] lg:py-[80px] px-5 md:px-0">
+  <div class={`split-inner flex flex-col md:flex-row md:max-w-[1080px] md:mx-auto gap-[10px] md:gap-[20px] lg:gap-[40px] items-center justify-center py-[60px] md:py-[40px] lg:py-[80px] px-5 md:px-0 ${imageOnLeft ? 'image-left' : ''}`}>
 
     <!-- Copy: always second on mobile; left on desktop (default) or right when imagePosition="left" -->
-    <div class={`order-2 ${imageOnLeft ? 'md:order-2' : 'md:order-1'} flex md:flex-[1_0_0] flex-col md:h-full items-start ${imageOnLeft ? 'md:items-start' : 'md:items-end'} justify-center md:py-[80px] w-full`}>
+    <div class={`split-copy order-2 ${imageOnLeft ? 'md:order-2' : 'md:order-1'} flex md:flex-[1_0_0] flex-col md:h-full items-start ${imageOnLeft ? 'md:items-start' : 'md:items-end'} justify-center md:py-[80px] w-full`}>
       <div class={`flex flex-col gap-5 md:gap-10 items-start w-full md:w-[390px] lg:w-[465px] ${imageOnLeft ? 'md:pr-[60px] lg:pr-0' : 'md:pl-[60px] lg:pl-0'}`}>
         <h2
           id={id}
@@ -91,7 +95,7 @@ const imageOnLeft = imagePosition === 'left';
     </div>
 
     <!-- Image: always first on mobile; right (default) or left when imagePosition="left" -->
-    <div class={`order-1 ${imageOnLeft ? 'md:order-1' : 'md:order-2'} md:flex-[1_0_0] flex items-center w-full`}>
+    <div class={`split-image order-1 ${imageOnLeft ? 'md:order-1' : 'md:order-2'} md:flex-[1_0_0] flex items-center justify-center w-full`}>
       <div
         class="min-w-0 md:max-h-[600px] lg:max-h-[900px]"
         style={`aspect-ratio: ${imageAspect}; ${imageMaxWidth ? `max-width: ${imageMaxWidth};` : 'flex: 1 0 0;'}`}
@@ -112,3 +116,46 @@ const imageOnLeft = imagePosition === 'left';
 
   </div>
 </section>
+
+<style>
+  /*
+   * At 1080px+ the inner flex row switches to a "content-anchored bleed" layout:
+   *   - Copy column: fixed 540px, left edge aligned to the 1080px content boundary
+   *   - Image column: flex-1, fills from copy's right edge to the viewport edge (bleed)
+   *
+   * For imagePosition="left" the mirrored gutter is applied to the copy's right side
+   * and the image bleeds to the LEFT viewport edge instead.
+   */
+  @media (min-width: 1080px) {
+    .split-inner {
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0;
+      gap: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    .split-copy {
+      flex: 0 0 540px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    /* image on right (default): copy has left gutter matching the 1080px center offset */
+    .split-inner:not(.image-left) .split-copy {
+      margin-left: max(20px, calc((100vw - 1080px) / 2));
+    }
+
+    /* image on left: copy has right gutter */
+    .split-inner.image-left .split-copy {
+      margin-right: max(20px, calc((100vw - 1080px) / 2));
+    }
+
+    .split-image {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+</style>
