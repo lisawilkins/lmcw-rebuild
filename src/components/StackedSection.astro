@@ -28,6 +28,8 @@ interface Props {
   ctaBgColor?: string;
   ctaBgHoverColor?: string;
   imageSrc: string;
+  imageSrcWebp?: string;
+  imageSrcWebp2x?: string;
   imageAlt: string;
 }
 
@@ -43,6 +45,8 @@ const {
   ctaBgColor,
   ctaBgHoverColor,
   imageSrc,
+  imageSrcWebp,
+  imageSrcWebp2x,
   imageAlt,
 } = Astro.props;
 
@@ -82,11 +86,17 @@ const resolvedCtaHover  = ctaBgHoverColor ?? d.ctaHover;
 
     <!-- Image — full width up to 1080px -->
     <div class="w-full max-w-[1080px]">
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        class="w-full h-auto object-contain"
-      />
+      {imageSrcWebp ? (
+        <picture>
+          <source
+            type="image/webp"
+            srcset={imageSrcWebp2x ? `${imageSrcWebp} 1x, ${imageSrcWebp2x} 2x` : imageSrcWebp}
+          />
+          <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+        </picture>
+      ) : (
+        <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+      )}
     </div>
 
     <!-- Copy — max 670px wide -->
@@ -109,7 +119,7 @@ const resolvedCtaHover  = ctaBgHoverColor ?? d.ctaHover;
       {ctaLabel && ctaHref && (
         <a
           href={ctaHref}
-          class="self-start bg-[var(--stacked-cta-bg)] hover:bg-[var(--stacked-cta-hover)] font-semibold text-[16px] text-white px-6 py-4 rounded-[6px] transition-colors shrink-0"
+          class="self-start bg-[var(--stacked-cta-bg)] hover:bg-[var(--stacked-cta-hover)] font-semibold text-[16px] text-[var(--color-off-white)] px-6 py-4 rounded-[6px] transition-colors shrink-0"
         >
           {ctaLabel}
         </a>

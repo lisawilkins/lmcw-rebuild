@@ -31,6 +31,8 @@ interface Props {
   ctaBgColor?: string;
   ctaBgHoverColor?: string;
   imageSrc: string;
+  imageSrcWebp?: string;
+  imageSrcWebp2x?: string;
   imageAlt: string;
   imageAspect?: string;
   imagePosition?: 'left' | 'right';
@@ -47,6 +49,8 @@ const {
   ctaBgColor = 'var(--color-coral)',
   ctaBgHoverColor = 'var(--color-coral-hover)',
   imageSrc,
+  imageSrcWebp,
+  imageSrcWebp2x,
   imageAlt,
   imageAspect = '620/790',
   imagePosition = 'right',
@@ -79,7 +83,7 @@ const imageOnLeft = imagePosition === 'left';
 
         <a
           href={ctaHref}
-          class="bg-[var(--split-cta-bg)] hover:bg-[var(--split-cta-hover)] text-white font-semibold text-[16px] px-6 py-4 rounded-[6px] transition-colors shrink-0"
+          class="bg-[var(--split-cta-bg)] hover:bg-[var(--split-cta-hover)] text-[var(--color-off-white)] font-semibold text-[16px] px-6 py-4 rounded-[6px] transition-colors shrink-0"
         >
           {ctaLabel}
         </a>
@@ -92,11 +96,17 @@ const imageOnLeft = imagePosition === 'left';
         class="min-w-0 md:max-h-[600px] lg:max-h-[900px]"
         style={`aspect-ratio: ${imageAspect}; ${imageMaxWidth ? `max-width: ${imageMaxWidth};` : 'flex: 1 0 0;'}`}
       >
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          class="w-full h-full object-contain"
-        />
+        {imageSrcWebp ? (
+          <picture>
+            <source
+              type="image/webp"
+              srcset={imageSrcWebp2x ? `${imageSrcWebp} 1x, ${imageSrcWebp2x} 2x` : imageSrcWebp}
+            />
+            <img src={imageSrc} alt={imageAlt} class="w-full h-full object-contain" />
+          </picture>
+        ) : (
+          <img src={imageSrc} alt={imageAlt} class="w-full h-full object-contain" />
+        )}
       </div>
     </div>
 
