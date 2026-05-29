@@ -188,20 +188,22 @@ import PageHero from '../components/PageHero.astro';
       </div>
 
       <!-- Reminders are good -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Reminders are good.</h3>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
-          A good reminder from data insights was that breaking news is still the most important feature to be refined. It inspired thinking about notification cadence, frequency, and inboxing. It also helped us narrow our focus on a set of features that would have the most impact for this launch — live video, audio, localization.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 mb-16">
+        <div class="md:w-[340px] shrink-0">
+          <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Reminders are good.</h3>
+          <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
+            A good reminder from data insights was that breaking news is still the most important feature to be refined. It inspired thinking about notification cadence, frequency, and inboxing. It also helped us narrow our focus on a set of features that would have the most impact for this launch — live video, audio, localization.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0">
+          <img
+            src="/images/nbc/nbc-marketReminder.png"
+            alt="Market research slide: Getting breaking news notifications is the most valued feature in the app, with 31% preference share"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+        </figure>
       </div>
-      <figure class="max-w-3xl mb-16">
-        <img
-          src="/images/nbc/nbc-marketReminder.png"
-          alt="Market research slide: Getting breaking news notifications is the most valued feature in the app, with 31% preference share"
-          class="w-full h-auto rounded-lg"
-          loading="lazy"
-        />
-      </figure>
 
       <!-- Present, not persistent -->
       <div class="max-w-2xl mb-8">
