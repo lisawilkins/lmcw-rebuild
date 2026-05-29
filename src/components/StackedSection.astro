@@ -3,6 +3,10 @@
  * StackedSection — full-width image on top, copy block below.
  * Has light and dark variants; more can be added via the `variant` prop.
  *
+ * imageBleed: when true the image spans the full section width (no horizontal
+ * padding or max-width cap) and only the copy block is constrained to 1080px.
+ * When false (default) both image and copy sit inside a max-w-[1080px] container.
+ *
  * Usage:
  *   <StackedSection
  *     id="strategy-heading"
@@ -31,6 +35,7 @@ interface Props {
   imageSrcWebp?: string;
   imageSrcWebp2x?: string;
   imageAlt: string;
+  imageBleed?: boolean;
 }
 
 const {
@@ -48,6 +53,7 @@ const {
   imageSrcWebp,
   imageSrcWebp2x,
   imageAlt,
+  imageBleed = false,
 } = Astro.props;
 
 // Variant defaults — override individually via explicit props
@@ -74,6 +80,7 @@ const resolvedHeading   = headingColor   ?? d.headingCol;
 const resolvedText      = textColor      ?? d.textCol;
 const resolvedCtaBg     = ctaBgColor     ?? d.ctaBg;
 const resolvedCtaHover  = ctaBgHoverColor ?? d.ctaHover;
+
 ---
 
 <section
@@ -82,49 +89,99 @@ const resolvedCtaHover  = ctaBgHoverColor ?? d.ctaHover;
   style={`background-color: ${resolvedBg}; --stacked-cta-bg: ${resolvedCtaBg}; --stacked-cta-hover: ${resolvedCtaHover};`}
   aria-labelledby={id}
 >
-  <div class="flex flex-col items-center px-5 py-[60px] md:py-[40px] lg:py-[80px] gap-[40px] md:gap-[60px]">
 
-    <!-- Image — full width up to 800px, centered -->
-    <div class="w-full max-w-[800px] mx-auto">
-      {imageSrcWebp ? (
-        <picture>
-          <source
-            type="image/webp"
-            srcset={imageSrcWebp2x ? `${imageSrcWebp} 1x, ${imageSrcWebp2x} 2x` : imageSrcWebp}
-          />
+  {imageBleed ? (
+    /* ── Full-bleed layout: image edge-to-edge, copy constrained to 670px ── */
+    <>
+      <!-- Image: max-w-[1280px] centered, top padding 80px, no side padding -->
+      <div class="w-full max-w-[1280px] mx-auto pt-[80px]">
+        {imageSrcWebp ? (
+          <picture>
+            <source
+              type="image/webp"
+              srcset={imageSrcWebp2x ? `${imageSrcWebp} 1x, ${imageSrcWebp2x} 2x` : imageSrcWebp}
+            />
+            <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+          </picture>
+        ) : (
           <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
-        </picture>
-      ) : (
-        <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
-      )}
-    </div>
-
-    <!-- Copy — max 670px wide -->
-    <div class="w-full max-w-[670px] flex flex-col gap-5 md:gap-8">
-      <h2
-        id={id}
-        class="font-medium leading-[0.9] text-[36px] md:text-[40px] lg:text-[60px]"
-        style={`color: ${resolvedHeading};`}
-      >
-        {heading}
-      </h2>
-
-      <div
-        class="flex flex-col gap-4 text-[18px] md:text-[20px] leading-[1.5]"
-        style={`color: ${resolvedText};`}
-      >
-        <slot name="body" />
+        )}
       </div>
 
-      {ctaLabel && ctaHref && (
-        <a
-          href={ctaHref}
-          class="self-start bg-[var(--stacked-cta-bg)] hover:bg-[var(--stacked-cta-hover)] font-semibold text-[16px] text-[var(--color-off-white)] px-6 py-4 rounded-[6px] transition-colors shrink-0"
+      <!-- Copy: max-w-[670px] centered, 40px gap from image, 80px bottom padding -->
+      <div class="w-full max-w-[670px] mx-auto px-5 pt-[40px] pb-[80px] flex flex-col gap-5 md:gap-8">
+        <h2
+          id={id}
+          class="font-medium leading-[0.9] text-[36px] md:text-[40px] lg:text-[60px]"
+          style={`color: ${resolvedHeading};`}
         >
-          {ctaLabel}
-        </a>
-      )}
-    </div>
+          {heading}
+        </h2>
 
-  </div>
+        <div
+          class="flex flex-col gap-4 text-[18px] md:text-[20px] leading-[1.5]"
+          style={`color: ${resolvedText};`}
+        >
+          <slot name="body" />
+        </div>
+
+        {ctaLabel && ctaHref && (
+          <a
+            href={ctaHref}
+            class="self-start bg-[var(--stacked-cta-bg)] hover:bg-[var(--stacked-cta-hover)] font-semibold text-[16px] text-[var(--color-off-white)] px-6 py-4 rounded-[6px] transition-colors shrink-0"
+          >
+            {ctaLabel}
+          </a>
+        )}
+      </div>
+    </>
+  ) : (
+    /* ── Contained layout: image + copy both inside max-w-[1080px] ── */
+    <div class="flex flex-col items-center px-5 py-[60px] md:py-[40px] lg:py-[80px] gap-[40px] max-w-[1080px] mx-auto w-full">
+
+      <!-- Image — full width up to 800px, centered -->
+      <div class="w-full max-w-[800px] mx-auto">
+        {imageSrcWebp ? (
+          <picture>
+            <source
+              type="image/webp"
+              srcset={imageSrcWebp2x ? `${imageSrcWebp} 1x, ${imageSrcWebp2x} 2x` : imageSrcWebp}
+            />
+            <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+          </picture>
+        ) : (
+          <img src={imageSrc} alt={imageAlt} class="w-full h-auto object-contain" />
+        )}
+      </div>
+
+      <!-- Copy — max 670px wide -->
+      <div class="w-full max-w-[670px] flex flex-col gap-5 md:gap-8">
+        <h2
+          id={id}
+          class="font-medium leading-[0.9] text-[36px] md:text-[40px] lg:text-[60px]"
+          style={`color: ${resolvedHeading};`}
+        >
+          {heading}
+        </h2>
+
+        <div
+          class="flex flex-col gap-4 text-[18px] md:text-[20px] leading-[1.5]"
+          style={`color: ${resolvedText};`}
+        >
+          <slot name="body" />
+        </div>
+
+        {ctaLabel && ctaHref && (
+          <a
+            href={ctaHref}
+            class="self-start bg-[var(--stacked-cta-bg)] hover:bg-[var(--stacked-cta-hover)] font-semibold text-[16px] text-[var(--color-off-white)] px-6 py-4 rounded-[6px] transition-colors shrink-0"
+          >
+            {ctaLabel}
+          </a>
+        )}
+      </div>
+
+    </div>
+  )}
+
 </section>

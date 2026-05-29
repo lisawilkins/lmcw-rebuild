@@ -34,7 +34,7 @@ import ConnectSection from '../components/ConnectSection.astro';
 
     <!-- Frosted glass text bar -->
     <div class="backdrop-blur-[4px] bg-[rgba(252,250,244,0.6)] flex flex-col items-center justify-end py-5 relative shrink-0 w-full">
-      <div class="flex flex-col md:flex-row md:items-end gap-3 w-full max-w-5xl overflow-hidden px-5 py-[30px] text-[var(--color-blue-800)] rounded-lg">
+      <div class="flex flex-col md:flex-row md:items-end gap-3 w-full max-w-[1080px] overflow-hidden px-5 py-[30px] text-[var(--color-blue-800)] rounded-lg">
         <h1
           id="hero-heading"
           class="font-light leading-none text-[44px] md:text-[56px] lg:text-[76px] flex-1 min-w-0"
@@ -63,7 +63,7 @@ import ConnectSection from '../components/ConnectSection.astro';
 
   <StackedSection
     id="strategy-heading"
-    heading="From complexity to clarity"
+    heading="Clarity from complexity"
     ctaLabel="View Product Strategy Impact"
     ctaHref="/projects-puf"
     imageSrc="/images/home/home-complexity.png"
@@ -86,12 +86,13 @@ import ConnectSection from '../components/ConnectSection.astro';
 
   <StackedSection
     id="unity-heading"
-    heading="Unity nourishes your competitive advantage"
+    heading="Unity is your competitive advantage"
     imageSrc="/images/home/home-unity.png"
     imageSrcWebp="/images/home/home_unity_1x.webp"
     imageAlt="A collage of NBC News app screens across multiple devices"
     headingColor="var(--color-tan-dark)"
     textColor="var(--color-tan-dark)"
+    imageBleed={true}
   >
     <p slot="body">
       Early in my career, <a href="https://x.com/sara_fortier" class="underline">Sara Fortier</a>'s work on <a href="https://outwitly.com/blog/creating-a-vision-for-ux-and-product-development/" target="_blank" class="underline">North Star Principals</a>. reshaped how I think about product leadership. Building a shared vision provides cross-functional partners a single point of alignment. When everyone is building toward the same outcome, collaboration stops being a process problem and becomes a competitive advantage.

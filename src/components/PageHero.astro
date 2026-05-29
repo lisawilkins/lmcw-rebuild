@@ -6,6 +6,8 @@ interface Props {
   imageOpacity?: number;
   minHeight?: string;
   gradientFade?: boolean;
+  scrimColor?: string;
+  grayscale?: boolean;
 }
 
 const {
@@ -15,7 +17,11 @@ const {
   imageOpacity = 0.4,
   minHeight = '320px',
   gradientFade = false,
+  scrimColor,
+  grayscale = false,
 } = Astro.props;
+
+const fadeColor = scrimColor ?? bgColor;
 ---
 
 <section
@@ -26,18 +32,18 @@ const {
   {bgImage && (
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-      style={`background-image: url('${bgImage}'); opacity: ${imageOpacity}`}
+      style={`background-image: url('${bgImage}'); opacity: ${imageOpacity}; filter: ${grayscale ? 'grayscale(100%)' : 'none'}`}
       aria-hidden="true"
     />
   )}
   {gradientFade && (
     <div
       class="absolute inset-0 pointer-events-none"
-      style={`background: linear-gradient(to bottom, transparent 30%, ${bgColor} 90%)`}
+      style={`background: linear-gradient(to bottom, transparent 30%, ${fadeColor} 90%)`}
       aria-hidden="true"
     />
   )}
-  <div class="relative mt-auto max-w-5xl mx-auto w-full px-6 pb-10">
+  <div class="relative mt-auto max-w-[1080px] mx-auto w-full px-6 pb-10">
     <slot />
   </div>
 </section>

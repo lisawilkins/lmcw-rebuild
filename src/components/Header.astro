@@ -12,7 +12,7 @@ function isActive(href: string) {
 ---
 
 <header class="sticky top-0 z-50 bg-[var(--color-blue-800)]">
-  <div class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+  <div class="max-w-[1080px] mx-auto px-5 h-16 flex items-center justify-between">
 
     <!-- Logomark -->
     <a href="/" aria-label="Lisa Wilkins — home" class="shrink-0 block">
@@ -36,7 +36,7 @@ function isActive(href: string) {
       {pageLinks.map(({ href, label }) => (
         <a
           href={href}
-          class={`text-lg font-normal uppercase px-1 py-2 transition-colors ${
+          class={`nav-link text-lg px-1 py-2 transition-colors ${
             isActive(href)
               ? 'text-[var(--color-off-white)] border-b-2 border-[var(--color-blue-500)]'
               : 'text-[var(--color-off-white)] hover:bg-black/30 hover:text-[var(--color-cream)]'
@@ -47,7 +47,7 @@ function isActive(href: string) {
       ))}
       <a
         href="#connect"
-        class="text-lg font-normal uppercase px-1 py-2 text-[var(--color-off-white)] hover:bg-black/30 hover:text-[var(--color-cream)] transition-colors"
+        class="nav-link text-lg px-1 py-2 text-[var(--color-off-white)] hover:bg-black/30 hover:text-[var(--color-cream)] transition-colors"
       >
         Connect
       </a>
@@ -78,7 +78,7 @@ function isActive(href: string) {
       {pageLinks.map(({ href, label }) => (
         <a
           href={href}
-          class={`text-lg font-normal uppercase transition-colors py-2 ${
+          class={`nav-link text-lg transition-colors py-2 ${
             isActive(href)
               ? 'text-[var(--color-off-white)] border-b-2 border-[var(--color-blue-500)]'
               : 'text-[var(--color-off-white)] hover:text-[var(--color-cream)]'
@@ -89,7 +89,7 @@ function isActive(href: string) {
       ))}
       <a
         href="#connect"
-        class="text-lg font-normal uppercase text-[var(--color-off-white)] hover:text-[var(--color-cream)] transition-colors py-2"
+        class="nav-link text-lg text-[var(--color-off-white)] hover:text-[var(--color-cream)] transition-colors py-2"
       >
         Connect
       </a>

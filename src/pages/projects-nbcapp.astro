@@ -1,7 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ConnectSection from '../components/ConnectSection.astro';
+import EditorialHeroMarquee from '../components/EditorialHeroMarquee.astro';
+import MarketingSizzleVideo from '../components/MarketingSizzleVideo.astro';
 import PageHero from '../components/PageHero.astro';
+
+const editorialHeroCards = [
+  { base: 'nbc_hero_none', alt: 'NBC News app layout with no hero image' },
+  { base: 'nbc_hero_full', alt: 'NBC News app layout with full-width hero image' },
+  { base: 'nbc_hero_above', alt: 'NBC News app layout with hero image above headline' },
+  { base: 'nbc_hero_below', alt: 'NBC News app layout with hero image below headline' },
+  { base: 'nbc_hero_none_related', alt: 'NBC News app layout with no hero and related stories module' },
+  { base: 'nbc_hero_full_related', alt: 'NBC News app layout with full-width hero and related stories' },
+  { base: 'nbc_hero_above_related', alt: 'NBC News app layout with hero above headline and related stories' },
+  { base: 'nbc_hero_below_related', alt: 'NBC News app layout with hero below headline and related stories' },
+];
 ---
 
 <BaseLayout
@@ -27,38 +40,38 @@ import PageHero from '../components/PageHero.astro';
   </PageHero>
 
   <!-- THE CHALLENGES -->
-  <section class="bg-[var(--color-off-white)] py-16 px-6" aria-labelledby="challenges-heading">
+  <section class="bg-[var(--color-charcoal)] py-16 px-6" aria-labelledby="challenges-heading">
     <div class="max-w-5xl mx-auto">
       <h2 id="challenges-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Challenges</h2>
       <div class="max-w-2xl">
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
+        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed mb-4">
           This brief case-study covers two different product launches — an overhaul of an antiquated system and the next release to add features users had been requesting.
         </p>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
-          The overhaul of the NBC News app involved a restructure of the stack, updates to the coding languages, new curation tools for editors and a new mobile API. The design language was updated to complement a news design system we called <a href="https://nbcnews.design/" target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--color-coral)] transition-colors">Bento</a>. The restructure allowed editors greater flexibility for any storytelling situation while enabling content sharing between brands. Features users requested were prioritized and ad revenue opportunities added in to help keep the lights on.
+        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
+          The overhaul of the NBC News app involved a restructure of the stack, updates to the coding languages, new curation tools for editors and a new mobile API. The design language was updated to complement a news design system we called <a href="https://nbcnews.design/" target="_blank" rel="noopener noreferrer" class="underline opacity-90 hover:text-[var(--color-coral)] transition-colors">Bento</a>. The restructure allowed editors greater flexibility for any storytelling situation while enabling content sharing between brands. Features users requested were prioritized and ad revenue opportunities added in to help keep the lights on.
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-10 mt-12">
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Scope</h3>
-          <p class="text-sm text-[var(--color-dark-gray)] leading-relaxed">
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] mb-4">Scope</h3>
+          <p class="text-sm text-[var(--color-off-white)] opacity-70 leading-relaxed">
             Complete restructure of the tech stack, migration to modern coding languages, the introduction of new curation tools for editors, and a new mobile API. The design language was updated to align with NBC News' Bento design system.
           </p>
         </div>
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Goals</h3>
-          <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-2">
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Increase video starts and conversions</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Boost video completion rates</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Increase awareness of the full breadth of content and media types</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Fully transition to the Bento Design System</li>
-            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0">→</span>Establish a flexible framework for future expansion and scale</li>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] mb-4">Goals</h3>
+          <ul class="text-sm text-[var(--color-off-white)] opacity-70 leading-relaxed space-y-2">
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Increase video starts and conversions</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Boost video completion rates</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Increase awareness of the full breadth of content and media types</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Fully transition to the Bento Design System</li>
+            <li class="flex gap-2"><span class="text-[var(--color-coral)] font-bold mt-0.5 shrink-0 opacity-100">→</span>Establish a flexible framework for future expansion and scale</li>
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-charcoal)] mb-4">Team</h3>
-          <ul class="text-sm text-[var(--color-dark-gray)] leading-relaxed space-y-1">
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-[var(--color-off-white)] mb-4">Team</h3>
+          <ul class="text-sm text-[var(--color-off-white)] opacity-70 leading-relaxed space-y-1">
             <li>Product Manager</li>
             <li>Creative Director</li>
             <li>2 Designers</li>
@@ -72,7 +85,7 @@ import PageHero from '../components/PageHero.astro';
   </section>
 
   <!-- THE ACTIONS -->
-  <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="actions-heading">
+  <section class="bg-[var(--color-off-white)] py-16 px-6" aria-labelledby="actions-heading">
     <div class="max-w-5xl mx-auto">
       <h2 id="actions-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-6">The Actions</h2>
       <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-12 max-w-2xl">
@@ -145,21 +158,23 @@ import PageHero from '../components/PageHero.astro';
       <h2 id="plan-heading" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-12">The Plan</h2>
 
       <!-- Ideation -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-2">Ideation</h3>
-        <p class="text-sm font-semibold text-[var(--color-off-white)] opacity-50 uppercase tracking-widest mb-4">A mature org knows that good ideas come from anywhere.</p>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
-          Multiple teams — product, marketing, engineering, data insights — gathered to pitch ideas, make sketches and kick off a direction we believed would have merit. The data insights team provided market research to help form our direction and resolve conflicting opinions.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 mb-16">
+        <div class="md:w-[340px] shrink-0">
+          <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-2">Ideation</h3>
+          <p class="text-sm font-semibold text-[var(--color-off-white)] opacity-50 uppercase tracking-widest mb-4">A mature org knows that good ideas come from anywhere.</p>
+          <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
+            Multiple teams — product, marketing, engineering, data insights — gathered to pitch ideas, make sketches and kick off a direction we believed would have merit. The data insights team provided market research to help form our direction and resolve conflicting opinions.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0">
+          <img
+            src="/images/nbc/nbc-sketches.png"
+            alt="Hand-drawn sketches for the notifications feature — roadblock alerts, embedded notifications, and alerts screen concepts"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+        </figure>
       </div>
-      <figure class="max-w-3xl mb-16">
-        <img
-          src="/images/nbc/nbc-sketches.png"
-          alt="Hand-drawn sketches for the notifications feature — roadblock alerts, embedded notifications, and alerts screen concepts"
-          class="w-full h-auto rounded-lg"
-          loading="lazy"
-        />
-      </figure>
 
       <!-- Double Diamond -->
       <div class="max-w-2xl mb-8">
@@ -206,43 +221,47 @@ import PageHero from '../components/PageHero.astro';
       </div>
 
       <!-- Present, not persistent -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Present, not persistent</h3>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
-          When mobile users are facing notification burnout, how do you determine which breaking alerts are "important" vs. "vitally important"? I assessed the use cases for a variety of notifications, then sent those into testing and research to help define the limits of annoyance. A push service that specialized in geo-targeting and delayed sends kept the app alerts from being a nuisance. User preferences could also determine if they received the alert.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 mb-16">
+        <div class="md:w-[340px] shrink-0">
+          <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Present, not persistent</h3>
+          <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
+            When mobile users are facing notification burnout, how do you determine which breaking alerts are "important" vs. "vitally important"? I assessed the use cases for a variety of notifications, then sent those into testing and research to help define the limits of annoyance. A push service that specialized in geo-targeting and delayed sends kept the app alerts from being a nuisance. User preferences could also determine if they received the alert.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0">
+          <img
+            src="/images/nbc/nbc-notifs.png"
+            alt="Notification Variations research document and user test notes on personalized push notifications"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+        </figure>
       </div>
-      <figure class="max-w-[600px] mb-16">
-        <img
-          src="/images/nbc/nbc-notifs.png"
-          alt="Notification Variations research document and user test notes on personalized push notifications"
-          class="w-full h-auto rounded-lg"
-          loading="lazy"
-        />
-      </figure>
 
     </div>
   </section>
 
   <!-- PAIN POINTS + EDITORIAL FREEDOM -->
-  <section class="bg-[var(--color-light-bg)] py-16 px-6">
+  <section class="bg-[var(--color-off-white)] py-16 px-6">
     <div class="max-w-5xl mx-auto">
 
       <!-- Pain Points -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Pain Points</h3>
-        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
-          We interviewed editorial to learn what their current pain points were for the existing CMS. The list was massive, but it came down to layout flexibility, overwriting content (while retaining the originals) and selected automations.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 mb-16">
+        <div class="md:w-[340px] shrink-0">
+          <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Pain Points</h3>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+            We interviewed editorial to learn what their current pain points were for the existing CMS. The list was massive, but it came down to layout flexibility, overwriting content (while retaining the originals) and selected automations.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0">
+          <img
+            src="/images/nbc/nbc-editorial.png"
+            alt="Editorial pain points research — app packaging challenges and homepage package review from the CMS audit"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+        </figure>
       </div>
-      <figure class="max-w-3xl mb-16">
-        <img
-          src="/images/nbc/nbc-editorial.png"
-          alt="Editorial pain points research — app packaging challenges and homepage package review from the CMS audit"
-          class="w-full h-auto rounded-lg"
-          loading="lazy"
-        />
-      </figure>
 
       <!-- Editorial Freedom -->
       <div class="max-w-2xl mb-8">
@@ -251,18 +270,14 @@ import PageHero from '../components/PageHero.astro';
           Layout packages were produced to give the editorial team easy, flexible methods for different news scenarios and tempos. Similar content types could be manually curated together for deep storytelling opportunities. Sections could remain fully or partially automated to ensure the content was always fresh with limited editorial lift.
         </p>
       </div>
-      <figure class="max-w-4xl mb-0">
-        <img
-          src="/images/nbc/nbc-hero-variations.png"
-          alt="Examples of editorial layout variations showing different image sizes and content hierarchy in the NBC News app"
-          class="w-full h-auto rounded-lg"
-          loading="lazy"
-        />
-        <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
-          Examples of how image size and repeatable elements can set hierarchy.
-        </figcaption>
-      </figure>
+    </div>
 
+    <EditorialHeroMarquee cards={editorialHeroCards} />
+
+    <div class="max-w-5xl mx-auto">
+      <p class="text-xs text-[var(--color-mid-gray)] mt-2 italic max-w-4xl">
+        Examples of how image size and repeatable elements can set hierarchy.
+      </p>
     </div>
   </section>
 
@@ -279,50 +294,80 @@ import PageHero from '../components/PageHero.astro';
       </div>
 
       <!-- Mobile CMS -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Mobile CMS</h3>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
-          Internal tools were built for the mobile app — none existed previously when 90% of the content was auto-fed by mobile APIs. The new internal CMS allowed editors to change layouts, overwrite copy, reorder and pin, and choose whether a component would be auto-fed or 100% manually curated.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-12 mb-16">
+        <div class="md:w-[340px] shrink-0">
+          <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Mobile CMS</h3>
+          <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
+            Internal tools were built for the mobile app — none existed previously when 90% of the content was auto-fed by mobile APIs. The new internal CMS allowed editors to change layouts, overwrite copy, reorder and pin, and choose whether a component would be auto-fed or 100% manually curated.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0 max-w-[500px]">
+          <img
+            src="/images/nbc/nbc-mobile-cms.png"
+            alt="Mobile CMS interface showing package options, component type selection, and real-time phone preview with annotated features"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+        </figure>
       </div>
-      <figure class="max-w-2xl mb-16">
-        <img
-          src="/images/nbc/nbc-mobile-cms.png"
-          alt="Mobile CMS interface showing package options, component type selection, and real-time phone preview with annotated features"
-          class="w-full h-auto rounded-lg"
-          loading="lazy"
-        />
-      </figure>
+
+    </div>
+  </section>
+
+  <!-- USER TESTING + MARKETING -->
+  <section class="bg-[var(--color-off-white)] py-16 px-6">
+    <div class="max-w-5xl mx-auto">
 
       <!-- User Testing -->
-      <div class="max-w-2xl mb-16">
-        <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">User Testing</h3>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed mb-4">
+      <div class="max-w-2xl mb-8">
+        <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">User Testing</h3>
+        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed mb-4">
           We tested across TODAY Show and NBC News app users. 78% of News app users responded overwhelmingly positively with the increased video access, and 62% were very satisfied that they could find everything about a storyline in one place. Both cohorts appreciated bigger images and better organization.
         </p>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
+        <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
           Users very regularly (in this case 87%) request customization and personalization. In future releases we began adding points of active personalization, and found that &lt;20% of users actually used it at all. With this knowledge, we opted for passive personalization using ID tokens, history, and activity.
         </p>
       </div>
 
-      <!-- Marketing -->
-      <div class="max-w-2xl mb-8">
-        <h3 class="text-2xl font-medium text-[var(--color-off-white)] mb-4">Marketing</h3>
-        <p class="text-base md:text-lg text-[var(--color-off-white)] opacity-70 leading-relaxed">
-          Prior to the official launch we worked with Marketing and Brand teams to create a promotional sizzle reel. It was used at media events, with press releases, and as a Preview asset in the app stores.
-        </p>
+      <div
+        class="max-w-[650px] max-h-[500px] overflow-y-auto overflow-x-hidden rounded-lg mb-16 overscroll-y-contain [-webkit-overflow-scrolling:touch]"
+        tabindex="0"
+        role="region"
+        aria-label="User testing results across NBC brands — scroll vertically to view the full image"
+      >
+        <img
+          src="/images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_2x.webp"
+          srcset="/images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_1x.webp 1x, /images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_2x.webp 2x, /images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_3x.webp 3x, /images/nbc/nbc_user_testing_across_brands_1/nbc_user_testing_across_brands_1_4x.webp 4x"
+          alt="User testing results comparing satisfaction and feature preferences across TODAY Show and NBC News app users"
+          class="block w-full h-auto"
+          loading="lazy"
+        />
       </div>
-      <figure class="max-w-4xl mb-8">
+
+      <!-- Marketing -->
+      <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-12 mb-12">
+        <div class="md:w-[340px] shrink-0">
+          <h3 class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Marketing</h3>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+            Prior to the official launch we worked with Marketing and Brand teams to create a promotional sizzle reel. It was used at media events, with press releases, and as a Preview asset in the app stores.
+          </p>
+        </div>
+        <div class="flex-1 min-w-0 max-w-[350px]">
+          <MarketingSizzleVideo src="/images/nbc/sizzle180813-feature-store-video.mp4" />
+        </div>
+      </div>
+      <figure class="mx-auto max-w-[700px] mb-0">
         <img
           src="/images/nbc/nbc-storyboard.png"
           alt="Marketing sizzle reel storyboard showing the new NBC News app launch video beats — intro, transition to cover, zoom on live video"
           class="w-full h-auto rounded-lg"
           loading="lazy"
         />
-        <figcaption class="text-xs text-[var(--color-off-white)] opacity-40 mt-2 italic">
+        <figcaption class="text-xs text-[var(--color-mid-gray)] mt-2 italic">
           The initial beats on the storyboard for the marketing launch video.
         </figcaption>
       </figure>
+
     </div>
   </section>
 
@@ -350,46 +395,54 @@ import PageHero from '../components/PageHero.astro';
   <!-- Showcase Video -->
   <section class="bg-[var(--color-off-white)] py-16 px-6" aria-labelledby="showcase-heading">
     <div class="max-w-5xl mx-auto">
-      <h2 id="showcase-heading" class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Showcase Video</h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed max-w-2xl mb-10">
-        Elevated video with prominent placement on the home screen, while allowing articles, videos, live streams, and podcasts to coexist seamlessly. Users gained access to short-, medium-, and long-form video options, plus audio alternatives for when video viewing isn't ideal.
-      </p>
-      <figure class="max-w-sm">
-        <img
-          src="/images/nbc/nbc-moreVideo.png"
-          alt="Three phone screens showing the redesigned NBC News app — home feed, video watch section, and THINK editorial section"
-          class="w-full h-auto rounded-xl"
-          loading="lazy"
-        />
-      </figure>
+      <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+        <div class="md:w-[340px] shrink-0">
+          <h2 id="showcase-heading" class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Showcase Video</h2>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+            Elevated video with prominent placement on the home screen, while allowing articles, videos, live streams, and podcasts to coexist seamlessly. Users gained access to short-, medium-, and long-form video options, plus audio alternatives for when video viewing isn't ideal.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0 max-w-sm">
+          <img
+            src="/images/nbc/nbc-moreVideo.png"
+            alt="Three phone screens showing the redesigned NBC News app — home feed, video watch section, and THINK editorial section"
+            class="w-full h-auto rounded-xl"
+            loading="lazy"
+          />
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- Scale to Brands -->
-  <section class="bg-[var(--color-light-bg)] py-16 px-6" aria-labelledby="scale-heading">
+  <section class="bg-[var(--color-off-white)] py-16 px-6" aria-labelledby="scale-heading">
     <div class="max-w-5xl mx-auto">
-      <h2 id="scale-heading" class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Scale to Brands</h2>
-      <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed max-w-2xl mb-10">
-        Everything we created was built to be brand-agnostic. The system was used to update the TODAY Show and Telemundo Noticias, and experiments were also done to show how Sky World News editorial and marketing teams might benefit from these updates.
-      </p>
-      <figure class="max-w-sm">
-        <img
-          src="/images/nbc/nbc-brandScale.png"
-          alt="Three phones showing the brand-agnostic design system applied across NBC News, TODAY, and Telemundo Noticias apps"
-          class="w-full h-auto rounded-xl"
-          loading="lazy"
-        />
-      </figure>
+      <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+        <div class="md:w-[340px] shrink-0">
+          <h2 id="scale-heading" class="text-2xl font-medium text-[var(--color-charcoal)] mb-4">Scale to Brands</h2>
+          <p class="text-base md:text-lg text-[var(--color-dark-gray)] leading-relaxed">
+            Everything we created was built to be brand-agnostic. The system was used to update the TODAY Show and Telemundo Noticias, and experiments were also done to show how Sky World News editorial and marketing teams might benefit from these updates.
+          </p>
+        </div>
+        <figure class="flex-1 min-w-0 max-w-sm">
+          <img
+            src="/images/nbc/nbc-brandScale.png"
+            alt="Three phones showing the brand-agnostic design system applied across NBC News, TODAY, and Telemundo Noticias apps"
+            class="w-full h-auto rounded-xl"
+            loading="lazy"
+          />
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- Back nav -->
-  <section class="bg-[var(--color-off-white)] py-10 px-6 border-t border-[var(--color-border)]">
+  <section class="bg-[var(--color-charcoal)] py-10 px-6 border-t border-white/10">
     <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
+      <a href="/" class="nav-link text-sm text-[var(--color-off-white)] opacity-70 hover:text-[var(--color-coral)] hover:opacity-100 transition-colors">
         &larr; Home
       </a>
-      <a href="/projects-puf" class="text-sm font-semibold text-[var(--color-mid-gray)] hover:text-[var(--color-coral)] transition-colors">
+      <a href="/projects-puf" class="nav-link text-sm text-[var(--color-off-white)] opacity-70 hover:text-[var(--color-coral)] hover:opacity-100 transition-colors">
         Strategy &rarr;
       </a>
     </div>

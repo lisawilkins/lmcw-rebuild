@@ -12,7 +12,7 @@ const {
   class="hc-section bg-[var(--color-dark-gray)] overflow-hidden"
   aria-labelledby="hc-heading"
 >
-  <div class="hc-inner flex flex-col md:flex-row items-stretch w-full max-w-[1280px] mx-auto">
+  <div class="hc-inner flex flex-col md:flex-row items-stretch w-full md:max-w-[1080px] md:mx-auto">
 
     <!-- ── Dots panel ──────────────────────────────────────────────
          clip-path clips L/R at the panel boundary (0 → panel width)
@@ -53,7 +53,7 @@ const {
     </div>
 
     <!-- ── Copy panel ──────────────────────────────────────────── -->
-    <div class="flex flex-col justify-center px-5 py-[60px] md:py-[80px] md:w-1/2 md:px-[60px] lg:px-[80px]">
+    <div class="hc-copy flex flex-col justify-center px-5 py-[60px] md:py-[80px] md:w-1/2 md:px-[60px] lg:px-[80px]">
       <div class="flex flex-col gap-5 md:gap-[40px] w-full lg:w-[465px]">
         <h2
           id="hc-heading"
@@ -72,6 +72,35 @@ const {
 </section>
 
 <style>
+  /*
+   * At 1080px+ switch to a content-anchored bleed layout:
+   *   - Dots panel: flex-1, bleeds to the LEFT viewport edge
+   *   - Copy panel: fixed 540px, right edge aligned to the 1080px content boundary
+   *
+   * The copy's right margin = (100vw - 1080px) / 2 (minimum 20px),
+   * which positions its right edge at exactly the 1080px content boundary.
+   */
+  @media (min-width: 1080px) {
+    .hc-inner {
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .hc-dots {
+      flex: 1 1 0;
+      width: auto;
+    }
+
+    .hc-copy {
+      flex: 0 0 540px;
+      width: 540px;
+      margin-right: max(20px, calc((100vw - 1080px) / 2));
+      padding-left: 60px;
+      padding-right: 0;
+    }
+  }
+
   /* ── "HUMAN CENTERED" label: pinned to panel centre ────────────── */
   .hc-label {
     left: 50%;
