@@ -10,8 +10,8 @@ export type Photo = {
   prefix: string;
 };
 
-/** Gallery photos 01–24. Photo 15 uses the legacy `15sq` folder naming. */
-export const PHOTOS: Photo[] = Array.from({ length: 24 }, (_, index) => {
+/** Gallery photos 01–27. Photo 15 uses the legacy `15sq` folder naming. */
+export const PHOTOS: Photo[] = Array.from({ length: 27 }, (_, index) => {
   const id = String(index + 1).padStart(2, '0');
   const isLegacySq = id === '15';
   const sqFolder = isLegacySq ? '15sq' : `${id}_sq`;
