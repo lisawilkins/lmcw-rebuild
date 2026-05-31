@@ -8,22 +8,22 @@ import { PHOTOS, photoSrc, photoSrcset } from '../data/photos';
 
 <section
   id="photos"
-  class="photos-section bg-[var(--color-blue-900)] py-[60px] md:py-[80px] lg:py-[100px] px-5 md:px-8 lg:px-10"
+  class="photos-section bg-[var(--color-charcoal)] py-[60px] md:py-[80px] lg:py-[100px] px-5 md:px-8 lg:px-10"
   aria-labelledby="photos-heading"
 >
   <h2
     id="photos-heading"
-    class="font-light leading-none text-[var(--color-cream)] text-[36px] md:text-[44px] lg:text-[52px] text-center mb-8 md:mb-10 lg:mb-12"
+    class="font-light leading-none text-[var(--color-cream)] text-[36px] md:text-[44px] lg:text-[36px] text-center mb-8 md:mb-10 lg:mb-12"
   >
     Things I've seen
   </h2>
 
-  <div class="photos-grid mx-auto w-full max-w-[1440px]">
+  <div class="photos-grid mx-auto w-full">
     {
       PHOTOS.map((photo) => (
         <button
           type="button"
-          class="photo-thumb group relative aspect-square overflow-hidden rounded-[var(--radius-md)] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-coral)]"
+          class="photo-thumb group relative overflow-hidden rounded-[var(--radius-md)] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-coral)]"
           data-photo-id={photo.id}
           data-full-src={photoSrc(photo.folder, photo.prefix)}
           data-full-srcset={photoSrcset(photo.folder, photo.prefix)}
@@ -35,6 +35,8 @@ import { PHOTOS, photoSrc, photoSrcset } from '../data/photos';
             alt=""
             loading="lazy"
             decoding="async"
+            width="60"
+            height="60"
             class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.03]"
           />
         </button>
@@ -83,22 +85,19 @@ import { PHOTOS, photoSrc, photoSrcset } from '../data/photos';
 <style>
   .photos-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, 60px);
+    justify-content: center;
     gap: var(--spacing-2);
+    /* 9 thumbnails × 60px + 8 gaps × 8px */
+    max-width: 604px;
   }
 
-  @media (min-width: 640px) {
-    .photos-grid {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: var(--spacing-2);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .photos-grid {
-      grid-template-columns: repeat(10, minmax(0, 1fr));
-      gap: var(--spacing-2);
-    }
+  .photo-thumb {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 0;
+    background: transparent;
   }
 
   .photo-lightbox {
