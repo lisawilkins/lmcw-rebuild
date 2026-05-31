@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ConnectSection from '../components/ConnectSection.astro';
+import PhotosSection from '../components/PhotosSection.astro';
+
+Astro.response.status = 404;
+
+const pageTitle = 'Page Not Found — Lisa Wilkins';
+const pageDescription = 'The page you are looking for could not be found.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} noIndex>
+  <section
+    class="relative overflow-hidden flex flex-col items-start justify-center py-[80px] md:py-[120px] lg:py-[160px] px-5"
+    aria-labelledby="not-found-heading"
+  >
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute inset-0 bg-[var(--color-off-white)]"></div>
+      <img
+        src="/images/photos/cemetery_1.webp"
+        alt=""
+        class="absolute inset-0 w-full h-full max-w-none object-cover opacity-[0.18] grayscale mix-blend-multiply"
+      />
+    </div>
+
+    <div class="relative w-full max-w-[1080px] mx-auto">
+      <p class="text-sm font-semibold uppercase tracking-widest text-[var(--color-coral)] mb-4">PAGE NOT FOUND</p>
+      <h1
+        id="not-found-heading"
+        class="font-medium leading-[0.9] text-[var(--color-blue-800)] text-[40px] md:text-[56px] lg:text-[64px] mb-5"
+      >
+        404
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-blue-700)] max-w-xl mb-8 leading-relaxed">
+        It's not you, it's me. I could have made a page for your typo or old link, but I'm lazy and didn't.
+        In the meanwhile you can go <a href="/" class="underline opacity-90 hover:text-[var(--color-coral)] transition-colors">Home</a> or look at some of my photos.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+      <!--  <a
+          href="/"
+          class="inline-flex items-center justify-center bg-[var(--color-coral)] hover:bg-[var(--color-coral-hover)] font-semibold text-[16px] text-[var(--color-off-white)] px-6 py-4 rounded-[6px] transition-colors">
+          Back to home
+        </a>
+        -->
+      </div>
+     
+      </div>
+  </section>
+
+  <ConnectSection />
+  <PhotosSection />
+</BaseLayout>
